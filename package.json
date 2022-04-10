@@ -10,8 +10,7 @@
         "server-install": "npm install",
         "client-install": "cd client && npm install",
         "install-all": "concurrently \"npm run server-install\"  \"npm run client-install\"",
-        "dev": "concurrently \"npm run server\"  \"npm run client\"",
-        "heroku-postbuild": "cd client && npm install && npm run build"
+        "dev": "concurrently \"npm run server\"  \"npm run client\""
     },
     "keywords": [],
     "author": "",
@@ -37,6 +36,7 @@
         "objects-to-csv": "^1.3.6"
     },
     "devDependencies": {
-        "nodemon": "^2.0.15"
+        "nodemon": "^2.0.15",
+        "heroku-postbuild": "cd client && npm install && npm run build"
     }
 }
