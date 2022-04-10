@@ -32,7 +32,7 @@ const userController = {
                 password: passwordHash
             }
             const activation_token = createAtivationToken(newUser)
-            const url = `${CLIENT_URL}/user/activate/${activation_token}`
+            const url = `https://courses-systems.herokuapp.com//user/activate/${activation_token}`
             sendMail(email, url, "Verify your email address")
             res.json({ msg: "Register Success! Please activate your email to start." })
         } catch (err) {
