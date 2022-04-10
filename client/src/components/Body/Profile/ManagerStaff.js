@@ -43,7 +43,7 @@ export default function ManagerStaff() {
       return errorNotifi('Password is not match!!')
     }
     try {
-      const res = await axios.post('http://localhost:5000/user/register', { name, email, password, role })
+      const res = await axios.post('/user/register', { name, email, password, role })
       successNotifi(res.data.msg)
       setLoading(Date.now())
     } catch (error) {
