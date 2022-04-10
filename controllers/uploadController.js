@@ -11,32 +11,32 @@ const ObjectsToCsv = require('objects-to-csv');
 
 const { CLIENT_URL } = process.env
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET
-})
-const uploadAvatar = (req, res) => {
-    try {
-        const file = req.file;
+        cloud_name: process.env.CLOUDINARY_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_SECRET
+    })
+    // const uploadAvatar = (req, res) => {
+    //     try {
+    //         const file = req.file;
 
-        cloudinary.v2.uploader.upload("public/uploads/" + file.filename, {
-            folder: 'avatar',
-            width: 150,
-            height: 150,
-            crop: "fill"
-        }, async(err, result) => {
-            if (err) throw err;
+//         cloudinary.v2.uploader.upload("public/uploads/" + file.filename, {
+//             folder: 'avatar',
+//             width: 150,
+//             height: 150,
+//             crop: "fill"
+//         }, async(err, result) => {
+//             if (err) throw err;
 
-            removeImg("public/uploads/" + file.filename)
+//             removeImg("public/uploads/" + file.filename)
 
-            // res.json({ url: result.secure_url })
-            res.json({ url: result.secure_url })
-        })
+//             // res.json({ url: result.secure_url })
+//             res.json({ url: result.secure_url })
+//         })
 
-    } catch (err) {
-        return res.status(500).json({ msg: err.message })
-    }
-}
+//     } catch (err) {
+//         return res.status(500).json({ msg: err.message })
+//     }
+// }
 const uploadIdea = async(req, res, next) => {
     try {
         const user = await Users.findById(req.user.id).select('-password')

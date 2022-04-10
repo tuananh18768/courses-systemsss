@@ -7,7 +7,7 @@ const { upload } = require('../middleware/documentIdea')
 const Coordinator = require('../middleware/coordinator')
 const authManager = require('../middleware/manager')
 
-router.post('/avater_upload', upload.single('file'), uploadImage, uploadController.uploadAvatar)
+// router.post('/avater_upload', upload.single('file'), uploadImage, uploadController.uploadAvatar)
 
 router.post('/upload_idea', auth, upload.array('file', 12), uploadController.uploadIdea)
 

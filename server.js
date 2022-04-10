@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-const fileUpload = require('express-fileUpload')
+    // const fileUpload = require('express-fileUpload')
 const path = require('path')
 
 const app = express()
