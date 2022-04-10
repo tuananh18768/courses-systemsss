@@ -27,7 +27,7 @@ export default function Header() {
     const userLink = () =>{
       return  <li className="drop-nav">
             <Link to='/' className="avatar">
-              <img  src={getAvatar?.filePath ? getAvatar?.filePath : user.avatar} alt="" style={{width:50, height:50, borderRadius: '50%', display: 'inline', objectFit: 'cover'}} /> {user.name}<i className="fa-solid fa-angle-down"></i>
+              <img  src={getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar} alt="" style={{width:50, height:50, borderRadius: '50%', display: 'inline', objectFit: 'cover'}} /> {user.name}<i className="fa-solid fa-angle-down"></i>
             </Link>
           <ul className="dropdown" style={{zIndex: 100}}>
                 <li><Link to={isAdmin ? `/profileAdmin` :  `/profile`}>Profile</Link></li>
