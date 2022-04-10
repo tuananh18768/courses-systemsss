@@ -29,19 +29,20 @@ export default function DetailPost() {
     const auth = useSelector((state) => state.auth);
     const departments = useSelector((state) => state.depatment);
     const cateAll = useSelector((state) => state.category);
-
+    
     const { user } = auth
     const [userInteract, setUserInteract] = useState(false) 
     const [userInteractDis, setUserInteractDis] = useState(false) 
     const [checkAnonymous, setCheckAnonymous] = useState(false)
     const [objPost, setObjPost] = useState({})
     const { id } = useParams()
+    const [dateComment, setDateComment] = useState(Date.now())
     const dispatch = useDispatch()
     useEffect(() => {
         if (token) {
             fetchAllIdeaStaff(token).then(res => dispatch(dispatchGetAllIdeaStaff(res)))
         }
-    }, [token, dispatch])
+    }, [token, dispatch, dateComment])
     useEffect(() => {
         if (token) {
             fetchAllDepartment(token).then(res => dispatch(dispatchGetAllDepartment(res)))
@@ -94,6 +95,7 @@ export default function DetailPost() {
             setDataComment(res.data)
             setTextComment('')
             setNewPost()
+            setDateComment(Date.now())
         } catch (error) {
             console.log(error);
         }
@@ -120,8 +122,7 @@ export default function DetailPost() {
             arr.push(item?.toString())
         }
     })
-    // console.log(departments)
-    // console.log(cateAll)
+
     return (
         <div className="wrapic">
             <div className="cm__col1">
