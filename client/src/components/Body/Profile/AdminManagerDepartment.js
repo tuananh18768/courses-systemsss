@@ -19,6 +19,7 @@ export default function AdminManagerDepartment() {
     const department = useSelector(state => state.depatment)
        
     const [dataDepartment, setDataDepartment] = useState(data)
+    const {departmentAlls} = department
     // const [modal, setModal] = useState({})
     const {name, set_deadline, set_deadlineSecond, error, success} = dataDepartment
 
@@ -101,7 +102,7 @@ export default function AdminManagerDepartment() {
       }
     }
     const handleUpdate = (id) => {
-        const objDepart = department.find(item => item._id === id)
+        const objDepart = departmentAlls.find(item => item._id === id)
         console.log(id)
         setDataDepartment(objDepart)
     }
@@ -144,6 +145,7 @@ export default function AdminManagerDepartment() {
             }
         })
     }
+    console.log(departmentAlls)
   return (
       <div id="departmentManager">
         <div className="ct ">
@@ -171,7 +173,7 @@ export default function AdminManagerDepartment() {
                 </tr>
               </thead>
               <tbody>
-              {department.map((current, index)=>{
+              {departmentAlls?.map((current, index)=>{
                return <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{current.name}</td>

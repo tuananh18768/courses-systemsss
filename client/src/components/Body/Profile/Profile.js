@@ -144,8 +144,6 @@ export default function Profile() {
     }
 
      const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
-     console.log(getAvatar)
-     console.log(linkImage)
     return (
       <>
         <div>
