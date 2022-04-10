@@ -239,7 +239,7 @@ export default function DetailPost() {
                     return <div className="idea__other" key={index}>
                         <Link to={`/detail_idea/${current._id}`}>
                             <div style={{ width: '100%', padding: '0 30px' }}>
-                                <p className="cm__title">title: {current.title > 14 ? current.title.slice(0, 100) + '...' : current.title}</p>
+                                <p style={{color: 'blue'}} className="cm__title">title: {current.title > 14 ? current.title.slice(0, 100) + '...' : current.title}</p>
                                 <div className="cm__time">
                                     <span>{arr.length} views</span>
                                     <span>{current.likes.length} Like</span>

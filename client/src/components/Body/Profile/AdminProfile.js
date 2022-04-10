@@ -25,32 +25,29 @@ export default function AdminProfile() {
 
     const auth = useSelector((state) => state.auth);
     const token = useSelector((state) => state.token);
-    const users = useSelector((state) => state.users);
 
-    const { user, isAdmin, isManager, getAvatar } = auth;
+    const { user, getAvatar} = auth;
     const [data, setData] = useState(initialState);
-    const [avatar, setAvatar] = useState(false);
     const [loading, setLoading] = useState(false);
     const [callback, setCallback] = useState(false);
     const [date, setDate] = useState(Date.now())
-    
+
     const dispatch = useDispatch()
-    
     const { name, password, cf_password, err, success } = data;
-    useEffect( ()=>{
-        if(token){
-            fetchAvatar(token).then(res =>(dispatch(dispatchGetAvatar(res))))
-        }
-    }, [token, dispatch, callback, date])
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setData({ ...data, [name]: value, err: '', success: '' })
     }
+    useEffect( ()=>{
+        if(token){
+            fetchAvatar(token).then(res =>(dispatch(dispatchGetAvatar(res))))
+        }
+    }, [token, dispatch, callback, date])
     const updateInfor = () => {
         try {
             axios.patch('/user/update_infor', {
-                name: name ? name : user.name,
+                name: name ? name : user.name
             }, {
                 headers: { Authorization: token }
             })
@@ -75,10 +72,10 @@ export default function AdminProfile() {
         }
     }
     const handleUpdate = () => {
-        if (name) updateInfor()
+        if (name ) updateInfor()
         if (password) updatePassword()
     }
-    const changeAvatar = async(e)=>{
+  const changeAvatar = async(e)=>{
         e.preventDefault()
         try {
             const file = e.target.files[0]
@@ -94,17 +91,16 @@ export default function AdminProfile() {
             formData.append('file', file)
 
             setLoading(true)
-            const res = await axios.post('/api/avater_upload', formData, {
+             await axios.post('/api/avater_upload', formData, {
                 headers: { 'contetn-type': 'multipart/form-data', Authorization: token }
             })
             setLoading(false)
-            setAvatar(res.data.url)
             setDate(Date.now())
         } catch (error) {
             setData({ ...data, err: error.response.data.msg, success: '' })
         }
     }
-     const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
+    const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
     return (
         <div className="adwrap">
             {err && showErrMsg(err)}
@@ -112,7 +108,7 @@ export default function AdminProfile() {
             {loading && <h3>Loadding ....</h3>}
             <div className="adwrap__header">
                 <h1>Admin Profile</h1>
-                <Link to="/home">Home </Link><i className="fa-solid fa-arrow-right-long" /><span> Admin Profile</span>
+                <Link style={{color: 'blue'}} to="/home">Home </Link><i className="fa-solid fa-arrow-right-long" /><span> Admin Profile</span>
             </div>
             <div className="adwrap__content">
                 <div className="adwrap__content__col1">
@@ -166,7 +162,7 @@ export default function AdminProfile() {
                 <div className="adwrap__content__col2">
                     <div className="adwrap__content__col__box">
                         <div className="ad__img my-2">
-                            <img className="ad_img_content"   src={linkImage} width="200px" alt="backgournd" />
+                            <img className="ad_img_content"   src={linkImage === ''? user.avatar : linkImage} width="200px" alt="backgournd" />
                             <div className="span__chooseFile" >
                                 <i className="fa fa-camera-retro"></i>
                                 <p style={{margin: 0}}>Change</p>
