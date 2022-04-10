@@ -84,9 +84,7 @@ export default function Register() {
           <button onSubmit={(e)=>{handleSubmit(e)}} className="button"type="submit"> 
             Register
           </button>
-          {/* <div className="forgot"> */}
           </div>
-        {/* </div> */}
       </form>
       <p>Already an account? <Link to="/login">Login</Link></p>
     </div>

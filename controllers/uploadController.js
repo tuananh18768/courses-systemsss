@@ -74,7 +74,7 @@ const uploadIdea = async(req, res, next) => {
             statusDeadline: statusDeadline ? true : false,
         })
         await multipleFiles.save()
-        const url = `${CLIENT_URL}/detail_idea/${multipleFiles._id}`
+        const url = `${CLIENT_URL}detail_idea/${multipleFiles._id}`
         sendMailIdea(url, "Staff upload done idea", user.email)
         res.status(200).json({ msg: message })
     } catch (error) {
@@ -174,7 +174,7 @@ const commentIdea = async(req, res) => {
 
         postComment.comments.unshift(newComment)
         await postComment.save()
-        const url = `${CLIENT_URL}/detail_idea/${req.params.id}`
+        const url = `${CLIENT_URL}detail_idea/${req.params.id}`
         sendMail(userAuthor.email, url, "Come to post")
         res.status(200).json(postComment.comments)
     } catch (error) {

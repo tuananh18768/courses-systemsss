@@ -32,8 +32,9 @@ const userController = {
                 password: passwordHash
             }
             const activation_token = createAtivationToken(newUser)
-            const url = `https://courses-systems.herokuapp.com//user/activate/${activation_token}`
+            const url = `${CLIENT_URL}user/activate/${activation_token}`
             sendMail(email, url, "Verify your email address")
+            console.log(url)
             res.json({ msg: "Register Success! Please activate your email to start." })
         } catch (err) {
             return res.status(500).json({ msg: err.message });
@@ -102,7 +103,7 @@ const userController = {
             if (!user) return res.status(400).json({ msg: "This email dose not exits." })
 
             const access_token = createAccessToken({ id: user.id })
-            const url = `${CLIENT_URL}/user/reset/${access_token}`
+            const url = `${CLIENT_URL}user/reset/${access_token}`
 
             sendMail(email, url, "Reset your password")
             res.json({ msg: "Re-send the password, please check your email." })

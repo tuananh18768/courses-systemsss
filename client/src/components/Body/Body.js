@@ -25,10 +25,7 @@ import ManagerManger from './Profile/ManagerMangerger'
 
 export default function Body() {
   const auth = useSelector(state => state.auth)
-  // const ideaStaff = useSelector(state => state.ideaStaff)
   const {isLogged, isAdmin, isManager} = auth
-
-  // console.log(ideaStaff)
   return (
     <main className="main" style={{display: 'inherit'}}>
         <Switch>
