@@ -27,29 +27,30 @@ export default function AdminProfile() {
     const token = useSelector((state) => state.token);
     const users = useSelector((state) => state.users);
 
-    const { user, isAdmin, isManager , getAvatar} = auth;
+    const { user, isAdmin, isManager, getAvatar } = auth;
     const [data, setData] = useState(initialState);
     const [avatar, setAvatar] = useState(false);
     const [loading, setLoading] = useState(false);
     const [callback, setCallback] = useState(false);
     const [date, setDate] = useState(Date.now())
-
+    
     const dispatch = useDispatch()
+    
     const { name, password, cf_password, err, success } = data;
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setData({ ...data, [name]: value, err: '', success: '' })
-    }
     useEffect( ()=>{
         if(token){
             fetchAvatar(token).then(res =>(dispatch(dispatchGetAvatar(res))))
         }
     }, [token, dispatch, callback, date])
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setData({ ...data, [name]: value, err: '', success: '' })
+    }
     const updateInfor = () => {
         try {
             axios.patch('/user/update_infor', {
-                name: name ? name : user.name
+                name: name ? name : user.name,
             }, {
                 headers: { Authorization: token }
             })
@@ -74,10 +75,10 @@ export default function AdminProfile() {
         }
     }
     const handleUpdate = () => {
-        if (name ) updateInfor()
+        if (name) updateInfor()
         if (password) updatePassword()
     }
-  const changeAvatar = async(e)=>{
+    const changeAvatar = async(e)=>{
         e.preventDefault()
         try {
             const file = e.target.files[0]
@@ -103,7 +104,7 @@ export default function AdminProfile() {
             setData({ ...data, err: error.response.data.msg, success: '' })
         }
     }
-    const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
+     const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
     return (
         <div className="adwrap">
             {err && showErrMsg(err)}

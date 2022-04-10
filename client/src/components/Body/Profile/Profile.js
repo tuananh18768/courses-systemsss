@@ -36,11 +36,6 @@ export default function Profile() {
     
     const { name, password, cf_password, err, success } = data;
     useEffect( ()=>{
-        if(isAdmin){
-            fetchAllUsers(token).then(res =>(dispatch(dispatchGetAllUsers(res))))
-        }
-    }, [token, isAdmin, dispatch, callback])
-    useEffect( ()=>{
         if(token){
             fetchAvatar(token).then(res =>(dispatch(dispatchGetAvatar(res))))
         }
@@ -107,42 +102,6 @@ export default function Profile() {
             setData({ ...data, err: error.response.data.msg, success: '' })
         }
     }
-    const handleRemove = async (id)=>{
-        try {
-            if(user._id === id){
-                if(window.confirm('Are you sure you want to delete this account?')){
-                    setLoading(true)
-                    await axios.delete(`/user/delete_user/${id}`, { headers: { Authorization: token }})
-                    setLoading(false)
-                    setCallback(!callback)
-                }
-            }
-        } catch (err) {
-            setData({...data, err: err.response.data.msg, success:''})
-        }
-    }
-    const renderData = () =>{
-        return users.map((current, index) =>{
-            return <tr key={index}>
-            <td>{index}</td>
-            <td>{current.name}</td>
-            <td>{current.email}</td>
-            <td>
-                {
-                    current.role === 1 ? <i className="fas fa-check" title="Admin"></i>
-                    : <i className="fas fa-times" title="User"></i>
-                }
-            </td>
-            <td>
-                <Link to={`/edit_user/${current._id}`}>
-                    <i className="fas fa-edit" title="Edit"></i>
-                </Link>
-                <i className="fas fa-trash-alt" title="Remove" style={{cursor: 'pointer', marginLeft: 30}} onClick={()=>{handleRemove(current._id)}}></i>
-            </td>
-        </tr>
-        })
-    }
-
      const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
     return (
       <>
@@ -236,20 +195,7 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-            {isAdmin &&  <table className="customers table table-dark mt-5">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Admin</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderData()}
-                </tbody>
-            </table>}
+       
            
         </div>
       </>
