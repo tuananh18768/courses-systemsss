@@ -3,16 +3,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-    // const fileUpload = require('express-fileUpload')
 const path = require('path')
 
 const app = express()
+const publicDirectory = path.join(__dirname, './public');
+app.use("/public", express.static(publicDirectory))
 app.use(cors())
 app.use(express.json())
-    // app.use(fileUpload({
-    //     useTempFiles: true,
-    //     tempFileDir: '/uploads/'
-    // }))
+
 app.use(cookieParser())
     // Routes
 app.use('/user', require('./routes/userRoute'))

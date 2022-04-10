@@ -149,10 +149,9 @@ const userController = {
     },
     updateInfor: async(req, res) => {
         try {
-            const { name, avatar } = req.body
+            const { name } = req.body
             await Users.findByIdAndUpdate({ _id: req.user.id }, {
                 name,
-                avatar
             })
             res.json({ msg: "Update successfully" })
         } catch (error) {

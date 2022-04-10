@@ -4,10 +4,13 @@ const auth = require('../middleware/auth')
 const multer = require('multer');
 const uploadImage = require('../middleware/uploadImage')
 const { upload } = require('../middleware/documentIdea')
+const { uploadAvatar } = require('../middleware/uploadAvatar')
 const Coordinator = require('../middleware/coordinator')
 const authManager = require('../middleware/manager')
 
-// router.post('/avater_upload', upload.single('file'), uploadImage, uploadController.uploadAvatar)
+router.post('/avater_upload', auth, uploadAvatar.single('file'), uploadImage, uploadController.uploadAvatar)
+
+router.get('/get_avatar', auth, uploadController.getAvatar)
 
 router.post('/upload_idea', auth, upload.array('file', 12), uploadController.uploadIdea)
 
@@ -17,7 +20,6 @@ router.delete('/delete_idea/:id', auth, uploadController.deleteIdea)
 
 router.get('/get_idea/:id', auth, uploadController.viewUser, uploadController.getDetailOneIdea)
 
-// router.get('/getall_idea', auth, Coordinator, uploadController.getallSingleFiles) //c1
 router.get('/getall_idea', auth, uploadController.getallSingleFiles)
 
 router.post('/get_idea_comment/:id', auth, uploadController.commentIdea)

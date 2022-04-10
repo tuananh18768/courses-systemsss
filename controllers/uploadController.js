@@ -1,42 +1,44 @@
-const cloudinary = require('cloudinary')
 const fs = require('fs')
 const ManyFileModel = require('../models/fileIdea')
 const Department = require('../models/department')
 const Users = require('../models/userModel')
 const categoryModel = require('../models/catergories')
+const UserAvatar = require('../models/fileAvatar')
 const sendMailIdea = require('../controllers/sendMailIdea')
 const sendMail = require('../controllers/sendMail')
 const admzip = require('adm-zip')
 const ObjectsToCsv = require('objects-to-csv');
 
 const { CLIENT_URL } = process.env
-cloudinary.config({
-        cloud_name: process.env.CLOUDINARY_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_SECRET
-    })
-    // const uploadAvatar = (req, res) => {
-    //     try {
-    //         const file = req.file;
+const uploadAvatar = async(req, res) => {
+    try {
+        const avatars = await UserAvatar.findOne({ avatarUser: req.user.id })
+        if (avatars) {
+            await UserAvatar.findByIdAndDelete(avatars._id)
+        }
+        const file = new UserAvatar({
+            avatarUser: req.user.id,
+            fileName: req.file.originalname,
+            filePath: req.file.path,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2)
+        })
+        await file.save()
+        console.log(file)
+        res.status(200).json({ msg: 'oke' })
 
-//         cloudinary.v2.uploader.upload("public/uploads/" + file.filename, {
-//             folder: 'avatar',
-//             width: 150,
-//             height: 150,
-//             crop: "fill"
-//         }, async(err, result) => {
-//             if (err) throw err;
-
-//             removeImg("public/uploads/" + file.filename)
-
-//             // res.json({ url: result.secure_url })
-//             res.json({ url: result.secure_url })
-//         })
-
-//     } catch (err) {
-//         return res.status(500).json({ msg: err.message })
-//     }
-// }
+    } catch (err) {
+        return res.status(500).json({ msg: err.message })
+    }
+}
+const getAvatar = async(req, res) => {
+    try {
+        const avatars = await UserAvatar.findOne({ avatarUser: req.user.id })
+        res.status(200).json(avatars)
+    } catch (error) {
+        return res.status(500).json({ msg: err.message })
+    }
+}
 const uploadIdea = async(req, res, next) => {
     try {
         const user = await Users.findById(req.user.id).select('-password')
@@ -81,8 +83,6 @@ const uploadIdea = async(req, res, next) => {
 }
 const updateIdea = async(req, res) => {
     try {
-        // const user = await Users.findById(req.user.id).select('-password')
-        // const cateOld =   await ManyFileModel.find
         const cateTime = await categoryModel.findById(req.body.category)
         const departmentTimes = await Department.findById(cateTime.departments)
         let message = 'Idea submission is overdue!!! '
@@ -133,13 +133,6 @@ const getDetailOneIdea = async(req, res) => {
         const user = await Users.findById(ideaElement.staff_id)
         const statusDeadline = new Date(timeFirst.set_deadlineSecond).getTime() > new Date().getTime()
         ideaElement = {...ideaElement._doc, category: cate.name, statusDeadline, staff_id: user.name, email_staff: user.email }
-            // ideaOfuser = await Promise.all(ideaElement.map(async(current) => {
-            //     const cate = await categoryModel.findById(ideaElement.category)
-            //     const timeFirst = await Department.findById(cate.departments)
-            //     const user = await Users.findById(ideaElement.staff_id)
-            //     const statusDeadline = new Date(timeFirst.set_deadline).getTime() > new Date().getTime()
-            //     return {...current._doc, category: cate.name, statusDeadline, staff_id: user.name, email_staff: user.email }
-            // }))
 
         res.status(200).json(ideaElement)
     } catch (error) {
@@ -360,5 +353,6 @@ module.exports = {
     getAllIdeaOfUser,
     downloadZipFile,
     downloadCsvFile,
-    anonymouslyUser
+    anonymouslyUser,
+    getAvatar
 }
