@@ -103,7 +103,7 @@ export default function AdminProfile() {
             setData({ ...data, err: error.response.data.msg, success: '' })
         }
     }
-    const linkImage = `http://localhost:3000/${getAvatar?.filePath}`
+    const linkImage = getAvatar ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}` :  user.avatar
     return (
         <div className="adwrap">
             {err && showErrMsg(err)}
@@ -165,7 +165,7 @@ export default function AdminProfile() {
                 <div className="adwrap__content__col2">
                     <div className="adwrap__content__col__box">
                         <div className="ad__img my-2">
-                            <img className="ad_img_content"   src={linkImage === ''? user.avatar : linkImage} width="200px" alt="backgournd" />
+                            <img className="ad_img_content"   src={linkImage} width="200px" alt="backgournd" />
                             <div className="span__chooseFile" >
                                 <i className="fa fa-camera-retro"></i>
                                 <p style={{margin: 0}}>Change</p>
