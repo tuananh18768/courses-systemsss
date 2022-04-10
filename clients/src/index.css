@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+/* 
+.App {
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: 0 0 20px #eee;
+    margin: 0 auto;
+    overflow: hidden;
+} */
+
+#downloadZip {
+    background-color: rgba(171, 11, 5, 0.85);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    transition: all 0.5s;
+}
+
+#downloadZip:hover {
+    background-color: rgba(231, 97, 91, 0.85);
+}
+
+#downloadZip:disabled {
+    background-color: rgba(124, 124, 124, 0.304);
+}
+
+#downloadCsv {
+    background-color: rgba(46, 165, 13, 0.85);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+#downloadCsv:hover {
+    background-color: rgba(50, 97, 91, 0.85);
+}
+
+#downloadCsv:disabled {
+    background-color: rgba(124, 124, 124, 0.304);
+}
+
+#nextPage {
+    background: transparent;
+    color: black;
+}
+
+#nextPage:disabled {
+    background: transparent;
+    color: rgba(175, 163, 163, 0.783);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#dashboard:hover {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #357daa;
+}
+
+.modal {
+    overflow: scroll;
+}
+
+
+/* Header */
+
+@import url("./components/Header/header.css");
+
+/* @import url("./components/Body/auth/auth.css"); */
+
+@import url("./components/Body/Profile/profile.css");
+@import url("./components/Body/iIdeaStaff/uploadIdea.css");
+@import url("./components/Body/iIdeaStaff/detailPost.css");
+@import url("./components/Body/Profile/managerIdea.css");
+@import url("./components/Body/Profile/dashboard.css");
+@import url("./components/Body/Profile/adminProfile.css");
+@import url("./components/Body/Profile/adminManager.css");
+
+/* @import url("./components/Body/Profile/adminManager.css"); */
