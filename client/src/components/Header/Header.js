@@ -153,12 +153,7 @@ export default function Header() {
                       </li>
                     )}
                     {isAdmin && (
-                      <li
-                        onClick={() => {
-                          handleLogout();
-                        }}
-                        className="noti__dropdown-item"
-                      >
+                      <li className="noti__dropdown-item">
                         <Link
                           style={{
                             display: "flex",
@@ -182,12 +177,7 @@ export default function Header() {
                       </li>
                     )}
                     {isAdmin && (
-                      <li
-                        onClick={() => {
-                          handleLogout();
-                        }}
-                        className="noti__dropdown-item"
-                      >
+                      <li className="noti__dropdown-item">
                         <Link
                           style={{
                             display: "flex",
@@ -211,12 +201,7 @@ export default function Header() {
                       </li>
                     )}
                     {isAdmin && (
-                      <li
-                        onClick={() => {
-                          handleLogout();
-                        }}
-                        className="noti__dropdown-item"
-                      >
+                      <li className="noti__dropdown-item">
                         <Link
                           style={{
                             display: "flex",
