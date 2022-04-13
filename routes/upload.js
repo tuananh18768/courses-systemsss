@@ -5,8 +5,7 @@ const multer = require('multer');
 const uploadImage = require('../middleware/uploadImage')
 const { upload } = require('../middleware/documentIdea')
 const { uploadAvatar } = require('../middleware/uploadAvatar')
-const Coordinator = require('../middleware/coordinator')
-const authManager = require('../middleware/manager')
+
 
 router.post('/avater_upload', auth, uploadAvatar.single('file'), uploadImage, uploadController.uploadAvatar)
 

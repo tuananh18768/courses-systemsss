@@ -82,6 +82,37 @@ button {
     overflow: scroll;
 }
 
+@media screen and (max-width: 992px) {
+    .header,
+    .wrapsb {
+        flex-direction: column !important;
+    }
+    .header {
+        padding: 20px 0;
+    }
+    .wrapsb {
+        height: auto !important;
+        padding-left: 0;
+    }
+    .noti__dropdown {
+        min-width: auto !important;
+        width: 100%;
+        right: 0;
+        left: 0;
+        top: 125px;
+    }
+    /* Category */
+    #carouselExampleIndicators .carousel-inner .carousel-item img {
+        height: 100px !important;
+        object-fit: cover;
+        margin-top: 172px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        margin-top: 175px !important;
+    }
+}
+
 
 /* Header */
 

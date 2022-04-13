@@ -1,67 +1,113 @@
-import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import axios from 'axios'
-import { showErrMsg, showSuccessMsg } from '../../utils/Notification/Notification'
-import { dispatchLogin } from '../../../redux/actions/authAction'
-import { useDispatch } from 'react-redux'
-import {errorNotifi} from '../../utils/Notification/Notification'
-import style from './auth.module.css'
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import {
+  showErrMsg,
+  showSuccessMsg,
+} from "../../utils/Notification/Notification";
+import { dispatchLogin } from "../../../redux/actions/authAction";
+import { useDispatch } from "react-redux";
+import { errorNotifi } from "../../utils/Notification/Notification";
+import style from "./auth.module.css";
 const initialState = {
-  email: '',
-  password: '',
-  error: '',
-  success: '',
-}
+  email: "",
+  password: "",
+  error: "",
+  success: "",
+};
 export default function Login() {
-  const [user, setUser] = useState(initialState)
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const [user, setUser] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const { email, password, error, success } = user
+  const { email, password, error, success } = user;
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setUser({ ...user, [name]: value, error: '', success: '' })
-  }
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value, error: "", success: "" });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const res = await axios.post('/user/login', { email, password }, { withCredentials: true })
-      setUser({ ...user, error: '', success: res.data.msg })
-      localStorage.setItem('firstLogin', true)
-      dispatch(dispatchLogin())
-      history.push("/home")
+      const res = await axios.post(
+        "/user/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      setUser({ ...user, error: "", success: res.data.msg });
+      localStorage.setItem("firstLogin", true);
+      dispatch(dispatchLogin());
+      history.push("/home");
     } catch (err) {
       err.response.data.msg &&
-        setUser({ ...user, error: err.response.data.msg, success: '' })
+        setUser({ ...user, error: err.response.data.msg, success: "" });
     }
-  }
+  };
   return (
     <div className={style.align}>
-    <h2>Login</h2>
-       {error && showErrMsg(error)}
-       {success && showSuccessMsg(success)}
+      <h2>Login</h2>
+      {error && showErrMsg(error)}
+      {success && showSuccessMsg(success)}
       <div className={style.grid}>
-        <form onSubmit={handleSubmit} className={`${style.forms} ${style.login}`}>
+        <form
+          onSubmit={handleSubmit}
+          className={`${style.forms} ${style.login}`}
+        >
           <div className={style.form__field}>
-            <label htmlFor="login__username"><svg className={style.icon}>
-              <use xlinkHref="#icon-user" />
-            </svg><span className={style.hidden}>Email</span></label>
-            <input style={{height: '100%', border: 0}} autoComplete="username"  type="text"  className="form__input" placeholder="Email" required  id="email" name="email" value={email}  
-            onChange={(e)=>{handleChange(e)}} />
+            <label htmlFor="login__username">
+              <svg className={style.icon}>
+                <use xlinkHref="#icon-user" />
+              </svg>
+              <span className={style.hidden}>Email</span>
+            </label>
+            <input
+              style={{ height: "100%", border: 0 }}
+              autoComplete="username"
+              type="text"
+              className="form__input"
+              placeholder="Email"
+              required
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => {
+                handleChange(e);
+              }}
+            />
           </div>
           <div className={style.form__field}>
-            <label htmlFor="login__password"><svg className={style.icon}>
-              <use xlinkHref="#icon-lock" />
-            </svg><span className={style.hidden}>Password</span></label>
-            <input style={{height: '100%', border: 0}}  type="password" className="form__input" placeholder="Password" id="password" required name="password" value={password}  onChange={(e)=>{handleChange(e)}}  />
+            <label htmlFor="login__password">
+              <svg className={style.icon}>
+                <use xlinkHref="#icon-lock" />
+              </svg>
+              <span className={style.hidden}>Password</span>
+            </label>
+            <input
+              style={{ height: "100%", border: 0 }}
+              type="password"
+              className="form__input"
+              placeholder="Password"
+              id="password"
+              required
+              name="password"
+              value={password}
+              onChange={(e) => {
+                handleChange(e);
+              }}
+            />
           </div>
-          <button onSubmit={(e)=>{handleSubmit(e)}} className={style.LoginBtn}> 
-             Login
-             </button>
+          <button
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+            className={style.LoginBtn}
+          >
+            Login
+          </button>
         </form>
-        <Link className={style.forgot} to="/forgot_password">Forgot password? <svg className={style.icon}>
-        </svg></Link>
+        <Link className={style.forgot} to="/forgot_password">
+          Forgot password? <svg className={style.icon}></svg>
+        </Link>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" className="icons">
         <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
@@ -75,5 +121,5 @@ export default function Login() {
         </symbol>
       </svg>
     </div>
-  )
+  );
 }

@@ -9,7 +9,7 @@
     /* helpers/align.css */
     
     .align {
-        margin-top: 100px;
+        margin-top: 65px;
         display: grid;
         place-items: center;
         background-color: var(--bodyBackgroundColor);
@@ -18,7 +18,7 @@
         font-size: var(--bodyFontSize);
         font-weight: var(--bodyFontWeight);
         line-height: var(--bodyLineHeight);
-        margin: 0;
+        padding: 75px;
         min-block-size: 100vh;
     }
     
@@ -76,17 +76,6 @@
     html {
         box-sizing: border-box;
         font-size: var(--htmlFontSize);
-    }
-    
-    body {
-        /* background-color: var(--bodyBackgroundColor);
-        color: var(--bodyColor);
-        font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
-        font-size: var(--bodyFontSize);
-        font-weight: var(--bodyFontWeight);
-        line-height: var(--bodyLineHeight);
-        margin: 0;
-        min-block-size: 100vh; */
     }
     /* modules/anchor.css */
     
@@ -221,6 +210,6 @@
     }
     /* Forgot pass */
     
-    #btnForgot:hover {
-        background: lightcoral;
+    .btnForgotResert:hover {
+        background: lightcoral !important;
     }
