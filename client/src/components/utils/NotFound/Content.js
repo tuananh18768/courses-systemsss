@@ -305,8 +305,8 @@ export default function Content() {
                     }
                   }}
                 >
+                  <option value="">---choose department---</option>;
                   {departmentAlls.map((current, index) => {
-                    <option value="">---choose department---</option>;
                     return (
                       <option key={index} value={current._id}>
                         {current.name}
