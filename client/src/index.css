@@ -111,6 +111,22 @@ button {
     .carousel-control-next {
         margin-top: 175px !important;
     }
+    .header__noti-item {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .idea__home {
+        flex-direction: column !important;
+        padding: 10px !important;
+    }
+    .divimg {
+        padding: 5px 20px !important;
+    }
+    .wrapIdeas {
+        width: 100% !important;
+    }
 }
 
 

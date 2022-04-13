@@ -64,7 +64,7 @@ export default function IdeaStaff({
                     />
                   )}
                 </div>
-                <div className="ideaContent" style={{ width: "825px" }}>
+                <div className="ideaContent">
                   <h3>
                     <span
                       style={{
@@ -165,7 +165,7 @@ export default function IdeaStaff({
                     />
                   )}
                 </div>
-                <div className="ideaContent" style={{ width: "825px" }}>
+                <div className="ideaContent">
                   <h3>
                     <span
                       style={{
