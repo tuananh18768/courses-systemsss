@@ -28,10 +28,14 @@ export default function Header() {
     return (
       <div className="header" style={{ display: "flex" }}>
         <div className="logo">
-          <img
-            src="https://colorlib.com/polygon/cooladmin/images/icon/logo.png"
-            alt="helo"
-          />
+          <Link to="/home" style={{ display: "flex", gap: "10px" }}>
+            <img
+              style={{ width: 110 }}
+              src="./img/dai-hoc-greenwich.jpg"
+              alt="helo"
+            />{" "}
+            <span>Courses Syste</span>
+          </Link>
         </div>
         <div className="wrapsb" style={{ height: 0 }}>
           <div className="header-search">
@@ -115,7 +119,7 @@ export default function Header() {
                           to="/managerIdea"
                           className="noti__dropdown-link"
                         >
-                          <i class="fa-solid fa-folder"></i>
+                          <i className="fa-solid fa-folder"></i>
                           <div className="noti__dropdown-info">
                             <p
                               style={{ margin: 0 }}
@@ -140,7 +144,7 @@ export default function Header() {
                           to="/managerIdea"
                           className="noti__dropdown-link"
                         >
-                          <i className="fa-solid fa-power-off" />
+                          <i className="fa-solid fa-layer-group"></i>
                           <div className="noti__dropdown-info">
                             <p
                               style={{ margin: 0 }}
@@ -164,13 +168,38 @@ export default function Header() {
                           to="/managerStaff"
                           className="noti__dropdown-link"
                         >
-                          <i class="fa-solid fa-users"></i>
+                          <i className="fa-solid fa-users"></i>
                           <div className="noti__dropdown-info">
                             <p
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
                               Manager Stafff
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
+                    )}
+
+                    {isAdmin && (
+                      <li className="noti__dropdown-item">
+                        <Link
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            color: "blue",
+                            padding: 16,
+                          }}
+                          to="/adminManager"
+                          className="noti__dropdown-link"
+                        >
+                          <i className="fa-solid fa-calendar"></i>
+                          <div className="noti__dropdown-info">
+                            <p
+                              style={{ margin: 0 }}
+                              className="noti__dropdown-name"
+                            >
+                              Manager Department
                             </p>
                           </div>
                         </Link>
@@ -188,7 +217,7 @@ export default function Header() {
                           to="/managerCoordinator"
                           className="noti__dropdown-link"
                         >
-                          <i class="fa-solid fa-user-pen"></i>
+                          <i className="fa-solid fa-user-pen"></i>
                           <div className="noti__dropdown-info">
                             <p
                               style={{ margin: 0 }}
@@ -212,7 +241,7 @@ export default function Header() {
                           to="/managerManger"
                           className="noti__dropdown-link"
                         >
-                          <i class="fa-solid fa-user-tie"></i>
+                          <i className="fa-solid fa-user-tie"></i>
                           <div className="noti__dropdown-info">
                             <p
                               style={{ margin: 0 }}

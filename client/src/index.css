@@ -114,6 +114,12 @@ button {
     .header__noti-item {
         position: static;
     }
+    .wrapIdeas {
+        width: 100% !important;
+    }
+    .ideaContent {
+        max-width: 735px !important
+    }
 }
 
 @media screen and (max-width: 768px) {
