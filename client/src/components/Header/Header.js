@@ -125,7 +125,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Idea
+                              Manage Idea
                             </p>
                           </div>
                         </Link>
@@ -150,7 +150,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Category
+                              Manage Category
                             </p>
                           </div>
                         </Link>
@@ -174,7 +174,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Stafff
+                              Manage Staff
                             </p>
                           </div>
                         </Link>
@@ -199,7 +199,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Department
+                              Manage Department
                             </p>
                           </div>
                         </Link>
@@ -223,7 +223,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Coordinator
+                              Manage Coordinator
                             </p>
                           </div>
                         </Link>
@@ -247,7 +247,7 @@ export default function Header() {
                               style={{ margin: 0 }}
                               className="noti__dropdown-name"
                             >
-                              Manager Manager
+                              Manage Manager
                             </p>
                           </div>
                         </Link>

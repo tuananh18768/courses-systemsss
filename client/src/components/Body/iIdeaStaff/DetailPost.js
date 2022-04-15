@@ -28,8 +28,8 @@ const formComment = {
   alignItems: "center",
 };
 const formatComentInput = {
-  padding: "0 30px",
   fontSize: "14px",
+  width: "90px"
 };
 export default function DetailPost() {
   const [textComment, setTextComment] = useState("");
@@ -174,7 +174,7 @@ export default function DetailPost() {
           </div>
           <div className="idea__dm">
             <span style={{ fontSize: "22px", fontWeight: "bold" }}>
-              Danh muc
+              Category
             </span>
             : {objPost.category}
           </div>

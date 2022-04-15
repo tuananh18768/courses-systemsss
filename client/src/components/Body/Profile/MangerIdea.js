@@ -147,7 +147,6 @@ export default function MangerIdea(props) {
     for (let i = 0; i < files.length; i++) {
       formData.append("file", files[i].file);
     }
-    console.log(category);
     Swal.fire({
       title: "Do you want to save the changes?",
       showDenyButton: true,
@@ -411,13 +410,6 @@ export default function MangerIdea(props) {
     setStatusFile(true);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  // const select_file = files?.map((fi) => {
-  //   return (
-  //     <div>
-  //       <img src={file.preview} style={{ width: 200 }} alt="" />
-  //     </div>
-  //   );
-  // });
   const handleDeleteFiles = (file) => {
     setFiles((current) => current.filter((p) => p.file !== file));
   };
@@ -429,7 +421,7 @@ export default function MangerIdea(props) {
   console.log(files);
   return (
     <div>
-      <div style={{ marginTop: "300px" }}>
+      <div style={{ marginTop: "116px" }}>
         {/* accept */}
         <div
           className="modal fade"
@@ -842,66 +834,66 @@ export default function MangerIdea(props) {
                         />
                         {statusFile
                           ? files?.map((current, index) => {
-                              return (
-                                <ul
-                                  key={index + 1}
-                                  style={{ marginTop: "20px" }}
+                            return (
+                              <ul
+                                key={index + 1}
+                                style={{ marginTop: "20px" }}
+                              >
+                                <li
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
                                 >
-                                  <li
+                                  <span>
+                                    {" "}
+                                    {current?.file?.path} {current.fileName}{" "}
+                                  </span>
+                                  <span
                                     style={{
-                                      display: "flex",
-                                      justifyContent: "space-between",
+                                      marginRight: "80px",
+                                      cursor: "pointer",
                                     }}
+                                    onClick={() =>
+                                      handleDeleteFiles(current.file)
+                                    }
                                   >
-                                    <span>
-                                      {" "}
-                                      {current?.file?.path} {current.fileName}{" "}
-                                    </span>
-                                    <span
-                                      style={{
-                                        marginRight: "80px",
-                                        cursor: "pointer",
-                                      }}
-                                      onClick={() =>
-                                        handleDeleteFiles(current.file)
-                                      }
-                                    >
-                                      Delete
-                                    </span>{" "}
-                                  </li>
-                                </ul>
-                              );
-                            })
+                                    Delete
+                                  </span>{" "}
+                                </li>
+                              </ul>
+                            );
+                          })
                           : modal.files?.map((current, index) => {
-                              return (
-                                <ul
-                                  key={index + 1}
-                                  style={{ marginTop: "20px" }}
+                            return (
+                              <ul
+                                key={index + 1}
+                                style={{ marginTop: "20px" }}
+                              >
+                                <li
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
                                 >
-                                  <li
+                                  <span> {current.fileName} </span>
+                                  <span
                                     style={{
-                                      display: "flex",
-                                      justifyContent: "space-between",
+                                      marginRight: "80px",
+                                      cursor: "pointer",
                                     }}
+                                    onClick={() =>
+                                      handleDeleteFilesUpdate(
+                                        current?.fileName
+                                      )
+                                    }
                                   >
-                                    <span> {current.fileName} </span>
-                                    <span
-                                      style={{
-                                        marginRight: "80px",
-                                        cursor: "pointer",
-                                      }}
-                                      onClick={() =>
-                                        handleDeleteFilesUpdate(
-                                          current?.fileName
-                                        )
-                                      }
-                                    >
-                                      Delete
-                                    </span>{" "}
-                                  </li>
-                                </ul>
-                              );
-                            })}
+                                    Delete
+                                  </span>{" "}
+                                </li>
+                              </ul>
+                            );
+                          })}
                       </div>
                       <div
                         className="form-group"
@@ -1178,66 +1170,66 @@ export default function MangerIdea(props) {
                         />
                         {statusFile
                           ? files?.map((current, index) => {
-                              return (
-                                <ul
-                                  key={index + 1}
-                                  style={{ marginTop: "20px" }}
+                            return (
+                              <ul
+                                key={index + 1}
+                                style={{ marginTop: "20px" }}
+                              >
+                                <li
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
                                 >
-                                  <li
+                                  <span>
+                                    {" "}
+                                    {current?.file?.path} {current.fileName}{" "}
+                                  </span>
+                                  <span
                                     style={{
-                                      display: "flex",
-                                      justifyContent: "space-between",
+                                      marginRight: "80px",
+                                      cursor: "pointer",
                                     }}
+                                    onClick={() =>
+                                      handleDeleteFiles(current.file)
+                                    }
                                   >
-                                    <span>
-                                      {" "}
-                                      {current?.file?.path} {current.fileName}{" "}
-                                    </span>
-                                    <span
-                                      style={{
-                                        marginRight: "80px",
-                                        cursor: "pointer",
-                                      }}
-                                      onClick={() =>
-                                        handleDeleteFiles(current.file)
-                                      }
-                                    >
-                                      Delete
-                                    </span>{" "}
-                                  </li>
-                                </ul>
-                              );
-                            })
+                                    Delete
+                                  </span>{" "}
+                                </li>
+                              </ul>
+                            );
+                          })
                           : modal.files?.map((current, index) => {
-                              return (
-                                <ul
-                                  key={index + 1}
-                                  style={{ marginTop: "20px" }}
+                            return (
+                              <ul
+                                key={index + 1}
+                                style={{ marginTop: "20px" }}
+                              >
+                                <li
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
                                 >
-                                  <li
+                                  <span> {current.fileName} </span>
+                                  <span
                                     style={{
-                                      display: "flex",
-                                      justifyContent: "space-between",
+                                      marginRight: "80px",
+                                      cursor: "pointer",
                                     }}
+                                    onClick={() =>
+                                      handleDeleteFilesUpdate(
+                                        current?.fileName
+                                      )
+                                    }
                                   >
-                                    <span> {current.fileName} </span>
-                                    <span
-                                      style={{
-                                        marginRight: "80px",
-                                        cursor: "pointer",
-                                      }}
-                                      onClick={() =>
-                                        handleDeleteFilesUpdate(
-                                          current?.fileName
-                                        )
-                                      }
-                                    >
-                                      Delete
-                                    </span>{" "}
-                                  </li>
-                                </ul>
-                              );
-                            })}
+                                    Delete
+                                  </span>{" "}
+                                </li>
+                              </ul>
+                            );
+                          })}
                       </div>
                       <div
                         className="form-group"

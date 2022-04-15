@@ -214,7 +214,7 @@ export default function Content() {
                   type="radio"
                   name="sort"
                 />
-                Decessding
+                Descending
                 <input
                   style={radio}
                   onClick={() => {
@@ -224,7 +224,7 @@ export default function Content() {
                   name="sort"
                   checked={!sort}
                 />
-                Acessding
+                Ascending
               </div>
               <select
                 className=" btnVI"
