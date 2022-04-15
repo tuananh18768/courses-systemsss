@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +21,7 @@ import {
   dispatchGetAllDepartment,
 } from "../../../redux/actions/departmentAction";
 import { errorNotifi } from "../../utils/Notification/Notification";
+import { useDropzone } from "react-dropzone";
 
 const formManagerIdea = {
   height: "80px",
@@ -52,8 +53,21 @@ const dataCategory = {
   errorCate: "",
   successCate: "",
 };
-
-export default function MangerIdea() {
+const Container = {
+  flex: "1",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
+  borderWidth: "2px",
+  borderRadius: "2px",
+  borderStyle: "dashed",
+  backgroundColor: "#fafafa",
+  color: "#bdbdbd",
+  outline: "none",
+  transition: "border .24s ease-in-out",
+};
+export default function MangerIdea(props) {
   const allIdeaOfStaff = useSelector((state) => state.allIdeaOfStaff);
   const token = useSelector((state) => state.token);
   const categories = useSelector((state) => state.category);
@@ -72,7 +86,9 @@ export default function MangerIdea() {
   const [departments, setDepartments] = useState();
   const [objectMessage, setobjectMessage] = useState(false);
   const [file, setFile] = useState([]);
+  const [files, setFiles] = useState([]);
   const [id, setId] = useState();
+  const [statusFile, setStatusFile] = useState(false);
   const [loadData, setLoadData] = useState(0);
 
   const { title, description, error, success } = modal;
@@ -84,7 +100,6 @@ export default function MangerIdea() {
       );
     }
   }, [token, dispatch]);
-  console.log(loadData);
   useEffect(() => {
     if (token) {
       fetchIdeaOfStaff(token).then((res) => dispatch(dispatchIdeaOfStaff(res)));
@@ -110,9 +125,11 @@ export default function MangerIdea() {
     setobjectMessage(false);
     setCategory(findIdByName._id);
     setModal(postItem);
+    setFiles(postItem.files);
     setAnymouserUpdate(postItem.anonymously);
   };
   const handleChangeFile = (e) => {
+    console.log(e);
     setFile(e.target.files);
   };
   const updateModal = (field, event) => {
@@ -127,8 +144,8 @@ export default function MangerIdea() {
     formData.append("category", category);
     formData.append("description", modal.description);
     formData.append("anonymously", anymouserUpdate);
-    for (let i = 0; i < file.length; i++) {
-      formData.append("file", file[i]);
+    for (let i = 0; i < files.length; i++) {
+      formData.append("file", files[i].file);
     }
     console.log(category);
     Swal.fire({
@@ -174,8 +191,8 @@ export default function MangerIdea() {
     formData.append("description", description);
     formData.append("category", category);
     formData.append("anonymously", checkAnonymous);
-    for (let i = 0; i < file.length; i++) {
-      formData.append("file", file[i]);
+    for (let i = 0; i < files.length; i++) {
+      formData.append("file", files[i].file);
     }
     if (title === "" || description === "") {
       errorNotifi("Please enter full !!!");
@@ -388,11 +405,31 @@ export default function MangerIdea() {
       }
     });
   };
-  // console.log(departments)
-  // console.log(allIdeaOfStaff)
+  const onDrop = useCallback((acceptedFiles) => {
+    const mapAcc = acceptedFiles.map((file) => ({ file }));
+    setFiles((current) => [...current, ...mapAcc]);
+    setStatusFile(true);
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  // const select_file = files?.map((fi) => {
+  //   return (
+  //     <div>
+  //       <img src={file.preview} style={{ width: 200 }} alt="" />
+  //     </div>
+  //   );
+  // });
+  const handleDeleteFiles = (file) => {
+    setFiles((current) => current.filter((p) => p.file !== file));
+  };
+  const handleDeleteFilesUpdate = (fileName) => {
+    setFiles((current) => current.filter((p) => p.fileName !== fileName));
+    setStatusFile(true);
+  };
+  console.log(modal);
+  console.log(files);
   return (
     <div>
-      <div style={{ marginTop: "116px" }}>
+      <div style={{ marginTop: "300px" }}>
         {/* accept */}
         <div
           className="modal fade"
@@ -481,6 +518,7 @@ export default function MangerIdea() {
               onClick={() => {
                 setCategory("");
                 setModal(dataUpload);
+                setFiles([]);
               }}
             >
               Create
@@ -786,6 +824,13 @@ export default function MangerIdea() {
                         <label className="col-12" htmlFor="file-input">
                           File
                         </label>
+                        <div style={Container} {...getRootProps()}>
+                          <input {...getInputProps()} name="file" />
+                          <p>
+                            Drag 'n' drop some files here, or click to select
+                            files
+                          </p>
+                        </div>
                         <input
                           className="col-12"
                           type="file"
@@ -793,7 +838,70 @@ export default function MangerIdea() {
                           name="file"
                           multiple
                           onChange={handleChangeFile}
+                          {...getInputProps()}
                         />
+                        {statusFile
+                          ? files?.map((current, index) => {
+                              return (
+                                <ul
+                                  key={index + 1}
+                                  style={{ marginTop: "20px" }}
+                                >
+                                  <li
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                    }}
+                                  >
+                                    <span>
+                                      {" "}
+                                      {current?.file?.path} {current.fileName}{" "}
+                                    </span>
+                                    <span
+                                      style={{
+                                        marginRight: "80px",
+                                        cursor: "pointer",
+                                      }}
+                                      onClick={() =>
+                                        handleDeleteFiles(current.file)
+                                      }
+                                    >
+                                      Delete
+                                    </span>{" "}
+                                  </li>
+                                </ul>
+                              );
+                            })
+                          : modal.files?.map((current, index) => {
+                              return (
+                                <ul
+                                  key={index + 1}
+                                  style={{ marginTop: "20px" }}
+                                >
+                                  <li
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                    }}
+                                  >
+                                    <span> {current.fileName} </span>
+                                    <span
+                                      style={{
+                                        marginRight: "80px",
+                                        cursor: "pointer",
+                                      }}
+                                      onClick={() =>
+                                        handleDeleteFilesUpdate(
+                                          current?.fileName
+                                        )
+                                      }
+                                    >
+                                      Delete
+                                    </span>{" "}
+                                  </li>
+                                </ul>
+                              );
+                            })}
                       </div>
                       <div
                         className="form-group"
@@ -1046,14 +1154,90 @@ export default function MangerIdea() {
                         <label className="col-12" htmlFor="file-input">
                           File
                         </label>
+                        <div style={Container} {...getRootProps()}>
+                          <input
+                            {...getInputProps()}
+                            name="file"
+                            onChange={handleChangeFile}
+                          />
+                          <p>
+                            Drag 'n' drop some files here, or click to select
+                            files
+                          </p>
+                        </div>
+                        {/* {select_file} */}
                         <input
+                          style={{ display: "block !important" }}
                           className="col-12"
                           type="file"
                           id="file-input"
                           name="file"
                           multiple
                           onChange={handleChangeFile}
+                          {...getInputProps()}
                         />
+                        {statusFile
+                          ? files?.map((current, index) => {
+                              return (
+                                <ul
+                                  key={index + 1}
+                                  style={{ marginTop: "20px" }}
+                                >
+                                  <li
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                    }}
+                                  >
+                                    <span>
+                                      {" "}
+                                      {current?.file?.path} {current.fileName}{" "}
+                                    </span>
+                                    <span
+                                      style={{
+                                        marginRight: "80px",
+                                        cursor: "pointer",
+                                      }}
+                                      onClick={() =>
+                                        handleDeleteFiles(current.file)
+                                      }
+                                    >
+                                      Delete
+                                    </span>{" "}
+                                  </li>
+                                </ul>
+                              );
+                            })
+                          : modal.files?.map((current, index) => {
+                              return (
+                                <ul
+                                  key={index + 1}
+                                  style={{ marginTop: "20px" }}
+                                >
+                                  <li
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                    }}
+                                  >
+                                    <span> {current.fileName} </span>
+                                    <span
+                                      style={{
+                                        marginRight: "80px",
+                                        cursor: "pointer",
+                                      }}
+                                      onClick={() =>
+                                        handleDeleteFilesUpdate(
+                                          current?.fileName
+                                        )
+                                      }
+                                    >
+                                      Delete
+                                    </span>{" "}
+                                  </li>
+                                </ul>
+                              );
+                            })}
                       </div>
                       <div
                         className="form-group"
@@ -1119,7 +1303,6 @@ export default function MangerIdea() {
                     >
                       Close
                     </button>
-                    {/* <Link to="/addIdea" id="btn_idea"  data-toggle="modal" data-target="#acceptJoin">SUBMIT</Link> */}
                     <button
                       type="button"
                       className="btn btn-primary"
@@ -1261,7 +1444,6 @@ export default function MangerIdea() {
                   >
                     Close
                   </button>
-                  {/* <Link to="/addIdea" id="btn_idea"  data-toggle="modal" data-target="#acceptJoin">SUBMIT</Link> */}
                   <button
                     type="button"
                     className="btn btn-primary"

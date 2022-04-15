@@ -69,3 +69,7 @@ td {
     background-color: rgb(4, 134, 174);
     color: rgb(13, 17, 14);
 }
+
+#chooseFile {
+    boder: 1px dashed black !important;
+}
