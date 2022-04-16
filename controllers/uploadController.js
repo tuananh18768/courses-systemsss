@@ -310,7 +310,7 @@ const downloadZipFile = async(req, res) => {
             zip.addLocalFile(fil.filePath);
         });
         const outputPath = "/" + Date.now() + "output.zip";
-        fs.writeFileSync(outputPath, zip.toBuffer());
+        fs.writeFileSync(outputPath, zip.toBuffer(), { mode: parseInt("0755", 8) });
         res.setHeader("Content-disposition", "attachment; filename=" + outputPath);
         res.download(outputPath, (err) => {
             if (err) {
