@@ -279,7 +279,7 @@ const userController = {
                     await DocumentIdea.findByIdAndDelete(item._id);
                 }
             }
-            res.status(500).json({ msg: "Delete successfully" });
+            res.status(200).json({ msg: "Delete successfully" });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }

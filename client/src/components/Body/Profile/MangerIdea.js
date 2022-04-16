@@ -85,12 +85,14 @@ export default function MangerIdea(props) {
   const [category, setCategory] = useState();
   const [departments, setDepartments] = useState();
   const [objectMessage, setobjectMessage] = useState(false);
-  const [file, setFile] = useState([]);
   const [files, setFiles] = useState([]);
-  const [id, setId] = useState();
   const [statusFile, setStatusFile] = useState(false);
   const [loadData, setLoadData] = useState(0);
 
+
+
+  console.log(modalCate)
+  console.log(departments)
   const { title, description, error, success } = modal;
   const { name, errorCate, successCate } = modalCate;
   useEffect(() => {
@@ -111,7 +113,7 @@ export default function MangerIdea(props) {
         dispatch(dispatchGetAllCategory(res))
       );
     }
-  }, [token, dispatch]);
+  }, [token, dispatch, loadData]);
   useEffect(() => {
     if (token) {
       fetchAllDepartment(token).then((res) =>
@@ -127,10 +129,6 @@ export default function MangerIdea(props) {
     setModal(postItem);
     setFiles(postItem.files);
     setAnymouserUpdate(postItem.anonymously);
-  };
-  const handleChangeFile = (e) => {
-    console.log(e);
-    setFile(e.target.files);
   };
   const updateModal = (field, event) => {
     const value = event.target.value;
@@ -271,13 +269,11 @@ export default function MangerIdea(props) {
           const res = await axios.delete(`/user/delete_category/${id}`, {
             headers: { Authorization: token },
           });
-          Swal.fire("Deleted!", `${res.data.msg}`, "success").then(
-            (confirm) => {
-              if (confirm.isConfirmed) {
-                setLoadData(Date.now());
-              }
+          Swal.fire("Deleted!", res.data.msg, "success").then((confirm) => {
+            if (confirm.isConfirmed) {
+              setLoadData(Date.now());
             }
-          );
+          });
         } catch (error) {
           setobjectMessage({ status: false, message: error.response.data.msg });
           Swal.fire({
@@ -305,11 +301,6 @@ export default function MangerIdea(props) {
   };
   const handleSubmitCate = async (e) => {
     e.preventDefault();
-    // let formDataCate = new FormData();
-    // console.log(modalCate.name)
-    // console.log(departments)
-    // formDataCate.append("name", modalCate.name)
-    // formDataCate.append("departments",departments)
     if (departments === undefined && modalCate.name === "") {
       errorNotifi("Please enter full !!!");
       return;
@@ -322,7 +313,6 @@ export default function MangerIdea(props) {
       errorNotifi("Please choose department!!!");
       return;
     }
-    // console.log(formDataCate);
     try {
       const res = await axios.post(
         "/user/add_category/",
@@ -417,8 +407,6 @@ export default function MangerIdea(props) {
     setFiles((current) => current.filter((p) => p.fileName !== fileName));
     setStatusFile(true);
   };
-  console.log(modal);
-  console.log(files);
   return (
     <div>
       <div style={{ marginTop: "116px" }}>
@@ -829,7 +817,6 @@ export default function MangerIdea(props) {
                           id="file-input"
                           name="file"
                           multiple
-                          onChange={handleChangeFile}
                           {...getInputProps()}
                         />
                         {statusFile
@@ -1006,7 +993,7 @@ export default function MangerIdea(props) {
                           className="form-control col-12"
                           id="cat"
                           name="name"
-                          defaultValue={name}
+                          value={name}
                           onChange={handleChangeCate}
                         />
                       </div>
@@ -1050,6 +1037,14 @@ export default function MangerIdea(props) {
                       type="button"
                       className="btn btn-secondary"
                       data-dismiss="modal"
+                      onClick={() => {
+                        setModalCate({
+                          name: "",
+                          errorCate: "",
+                          successCate: "",
+                        });
+                        setDepartments("undefined")
+                      }}
                     >
                       Close
                     </button>
@@ -1150,7 +1145,6 @@ export default function MangerIdea(props) {
                           <input
                             {...getInputProps()}
                             name="file"
-                            onChange={handleChangeFile}
                           />
                           <p>
                             Drag 'n' drop some files here, or click to select
@@ -1165,7 +1159,6 @@ export default function MangerIdea(props) {
                           id="file-input"
                           name="file"
                           multiple
-                          onChange={handleChangeFile}
                           {...getInputProps()}
                         />
                         {statusFile
@@ -1391,7 +1384,6 @@ export default function MangerIdea(props) {
                         id="file-input"
                         name="file"
                         multiple
-                        onChange={handleChangeFile}
                       />
                     </div>
                     <div className="form-group">
