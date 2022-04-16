@@ -296,12 +296,17 @@ const getAllIdeaOfUser = async(req, res) => {
 const downloadZipFile = async(req, res) => {
     try {
         const doc = await ManyFileModel.find();
-        const file = doc
-            .map((e) => e.files)
-            .reduce((acc, currentValue) => acc.concat(currentValue), []);
+        // const loc = doc.reduce(
+        //(acc, currentValue) => acc.concat(currentValue.files), []
+        // );
+        // .map((e) => e.files)
+        // .reduce((acc, currentValue) => acc.concat(currentValue), []);
+        // console.log(loc);
+        const file = doc.reduce(
+            (acc, currentValue) => acc.concat(currentValue.files), []
+        );
         const zip = new admzip();
         file.forEach((fil) => {
-            console.log(fil.filePath);
             zip.addLocalFile(fil.filePath);
         });
         const outputPath = "/" + Date.now() + "output.zip";
