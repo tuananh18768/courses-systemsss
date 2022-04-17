@@ -24,8 +24,7 @@ export default function AdminManagerDepartment() {
   const [dataDepartment, setDataDepartment] = useState(data);
   const { departmentAlls } = department;
   const [loading, setLoading] = useState(0);
-  const { name, set_deadline, set_deadlineSecond, error, success } =
-    dataDepartment;
+  const { name, set_deadline, set_deadlineSecond } = dataDepartment;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -256,11 +255,11 @@ export default function AdminManagerDepartment() {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog" style={{ maxWidth: 800 }}>
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Information
+                Department
               </h5>
               <button
                 type="button"
@@ -274,11 +273,11 @@ export default function AdminManagerDepartment() {
             <form action>
               <div className="modal-body">
                 <div className="form-group">
-                  <label htmlFor="cat">Department</label>
+                  <label htmlFor="cat">Name deparment</label>
                   <input
                     type="text"
                     name="name"
-                    defaultValue={name}
+                    value={name}
                     onChange={handleChange}
                     className="form-control"
                     id="cat"
@@ -286,22 +285,22 @@ export default function AdminManagerDepartment() {
                 </div>
                 <div className="d-flex justify-content-between">
                   <div className="form-group">
-                    <label htmlFor="cat">Status time first</label>
+                    <label htmlFor="cat">First closure date</label>
                     <input
                       type="date"
                       name="set_deadline"
-                      defaultValue={set_deadline}
+                      value={set_deadline}
                       onChange={handleChange}
                       className="form-control"
                       id="cat"
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="cat">Status deadline</label>
+                    <label htmlFor="cat">Final closure date</label>
                     <input
                       type="date"
                       name="set_deadlineSecond"
-                      defaultValue={set_deadlineSecond}
+                      value={set_deadlineSecond}
                       onChange={handleChange}
                       className="form-control"
                       id="cat"
@@ -314,6 +313,13 @@ export default function AdminManagerDepartment() {
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
+                  onClick={() => {
+                    setDataDepartment({
+                      name: '',
+                      set_deadline: "",
+                      set_deadlineSecond: "",
+                    });
+                  }}
                 >
                   Close
                 </button>
@@ -338,7 +344,7 @@ export default function AdminManagerDepartment() {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog" style={{ maxWidth: 800 }}>
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
@@ -356,13 +362,13 @@ export default function AdminManagerDepartment() {
             <form action>
               <div className="modal-body">
                 <div className="form-group">
-                  <label htmlFor="cat">Department</label>
+                  <label htmlFor="cat">Name deparment</label>
                   <input
                     type="text"
                     name="name"
                     defaultValue={dataDepartment.name}
                     onChange={handleChange}
-                    className="form-control"
+                    className="form-control col-12"
                     id="cat"
                   />
                 </div>
@@ -396,6 +402,13 @@ export default function AdminManagerDepartment() {
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
+                  onClick={() => {
+                    setDataDepartment({
+                      name: '',
+                      set_deadline: "",
+                      set_deadlineSecond: "",
+                    });
+                  }}
                 >
                   Close
                 </button>
