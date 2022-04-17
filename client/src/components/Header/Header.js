@@ -35,7 +35,7 @@ export default function Header() {
               src="./img/dai-hoc-greenwich.jpg"
               alt="helo"
             />{" "}
-            <span>Courses Syste</span>
+            <span>Courses System</span>
           </Link>
         </div>
         <div className="wrapsb" style={{ height: 0 }}>
@@ -306,7 +306,7 @@ export default function Header() {
             to="/"
           >
             <img src="../img/logo.jpg" alt="logo" className="header__img" />{" "}
-            Courses Sytems{" "}
+            Courses Sytem
           </Link>
         </div>
         <div className="header__login">

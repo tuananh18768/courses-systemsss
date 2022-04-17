@@ -118,10 +118,10 @@ export default function AdminProfile() {
       setDate(Date.now());
     } catch (error) {
       setData({ ...data, err: error.response.data.msg, success: "" });
-    }
+    } P
   };
   const linkImage = getAvatar
-    ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}`
+    ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
     : user.avatar;
   return (
     <div className="adwrap" style={{ marginTop: "85px" }}>
