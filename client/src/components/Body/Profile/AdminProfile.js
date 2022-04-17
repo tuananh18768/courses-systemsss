@@ -118,7 +118,7 @@ export default function AdminProfile() {
       setDate(Date.now());
     } catch (error) {
       setData({ ...data, err: error.response.data.msg, success: "" });
-    } P
+    }
   };
   const linkImage = getAvatar
     ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
