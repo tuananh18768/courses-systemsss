@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchDashboard, dispatchDashboard } from '../../../redux/actions/dashboardActions'
 
 import { Chart as ChartJS, registerables } from 'chart.js';
-import { Line, Bar, Doughnu, Pie } from 'react-chartjs-2'
+import { Line, Bar, Radar, Pie } from 'react-chartjs-2'
 ChartJS.register(...registerables);
 export default function Dashboard() {
     const token = useSelector(state => state.token)
@@ -35,18 +35,37 @@ export default function Dashboard() {
         const nameDashboard = dashboard.postIdea?.map(element => element.staff_id)
         return nameDashboard
     }
-    const arrayCate = ()=>{
+    const nameDeparment = () => {
+        const nameAllDeparment = dashboard.arrayDepartment?.map(element => element.name)
+        return nameAllDeparment
+    }
+    const arrayCate = () => {
         const nameCate = dashboard.arrayCate?.map(element => element.name)
         return nameCate
     }
-    const elementCate = ()=>{
-        const objCate = dashboard.arrayCate?.map(e=> e.catePost.length)
+    const elementCate = () => {
+        const objCate = dashboard.arrayCate?.map(e => e.catePost.length)
         return objCate
     }
-    console.log(elementCate())
+    const elementDepartment = () => {
+        const objDepartment = dashboard.arrayDepartment?.map(e => e.deparmentPost.length)
+        return objDepartment
+    }
+    console.log(dashboard)
     return (
-        <div className="db">
+        <div className="db" style={{ marginTop: '116px' }}>
             <div className="db__row">
+                <div className="db__col-4 mgr10">
+                    <div className="dbbox">
+                        <div>
+                            <h4>Total Department</h4>
+                            <p>Last year expenses</p>
+                        </div>
+                        <div className>
+                            <span>{dashboard.arrayDepartment?.length}</span>
+                        </div>
+                    </div>
+                </div>
                 <div className="db__col-4 mgr10">
                     <div className="dbbox">
                         <div>
@@ -80,12 +99,12 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div className="db__row">
                 <div className="col6 mgr10">
                     <div className="dbitem">
-                    <h3 className="text-center">Post All</h3>
+                        <h3 className="text-center">Post All</h3>
                         <Bar
                             data={{
                                 labels: namePost(),
@@ -144,50 +163,22 @@ export default function Dashboard() {
                 </div>
                 <div className="col7">
                     <div className="col7__item">
-                        <Line
+                        <h3 className="text-center">Deparment All</h3>
+                        <Radar
                             data={{
-                                labels: namePost(),
+                                labels: nameDeparment(),
                                 datasets: [
                                     {
-                                        label: "Like",
+                                        label: "Category",
                                         backgroundColor: [
                                             "rgba(255, 0, 132, 0.1)"
                                         ],
-                                        data: like1(),
+                                        data: elementDepartment(),
                                         borderColor: "rgba(255, 0, 132, 1)",
                                         fill: "start",
                                         borderWidth: 0.5
                                     },
-                                    {
-                                        label: "Comment",
-                                        backgroundColor: [
-                                            "rgba(93, 13, 54, 0.1)"
-                                        ],
-                                        data: comment(),
-                                        borderColor: "rgba(0, 168, 255, 1)",
-                                        fill: "start",
-                                        borderWidth: 0.5
-                                    },
-                                    {
-                                        label: "View",
-                                        backgroundColor: [
-                                            "rgba(120, 255, 0, 0.1)"
-                                        ],
-                                        data: view(),
-                                        borderColor: "rgba(120,255,0, 1)",
-                                        fill: "start",
-                                        borderWidth: 0.5
-                                    },
-                                    {
-                                        label: "Dislike",
-                                        backgroundColor: [
-                                            "rgba(0, 168, 255, 0.1)"
-                                        ],
-                                        data: dislike(),
-                                        borderColor: "rgba(0, 168, 255, 1)",
-                                        fill: "start",
-                                        borderWidth: 0.5
-                                    }
+
                                 ],
                             }}
                             options={{
@@ -201,7 +192,7 @@ export default function Dashboard() {
 
                     </div>
                     <div className="col7__item">
-                    <h3 className="text-center">Cate All</h3>
+                        <h3 className="text-center">Cate All</h3>
                         <Pie
                             data={{
                                 labels: arrayCate(),
@@ -215,7 +206,7 @@ export default function Dashboard() {
                                             'rgba(0, 168, 255, 0.2)'
                                         ],
                                         data: elementCate(),
-                                        
+
                                         fill: "start",
                                         borderWidth: 0.5
                                     },

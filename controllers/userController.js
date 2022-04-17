@@ -320,10 +320,13 @@ const userController = {
             const user = await Users.find();
             const postIdea = await DocumentIdea.find();
             const cateAll = await Categories.find();
+            const departmentAll = await Department.find();
 
             let ideaOfuser = [];
             let arrayCate = [];
             let catePost = [];
+            let arrayDepartment = [];
+            let deparmentPost = [];
             ideaOfuser = await Promise.all(
                 postIdea.map(async(current) => {
                     const cate = await Categories.findById(current.category);
@@ -345,6 +348,12 @@ const userController = {
                     return {...e._doc, catePost };
                 })
             );
+            arrayDepartment = await Promise.all(
+                departmentAll.map(async(e) => {
+                    deparmentPost = await Categories.find({ departments: e._id });
+                    return {...e._doc, deparmentPost };
+                })
+            );
             const allStaff = [];
             for (let item of user) {
                 if (item.role === 0) {
@@ -355,6 +364,7 @@ const userController = {
                 allStaff: allStaff,
                 postIdea: ideaOfuser,
                 arrayCate: arrayCate,
+                arrayDepartment: arrayDepartment,
             };
             res.send(dashboard);
         } catch (error) {

@@ -426,7 +426,7 @@ export default function MangerIdea(props) {
             >
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Đồng ý với các điều khoản
+                  Agree to the terms
                 </h5>
                 <button
                   type="button"
@@ -440,11 +440,10 @@ export default function MangerIdea(props) {
               <div className="modal-body">
                 <ul style={{ listStyle: "disc inside" }}>
                   <li>
-                    Đồng ý và làm theo nội quy trong hệ thống để mọi người góp ý
+                    Agree and follow the rules in the system for everyone to comment
                   </li>
                   <li>
-                    Baì viết của bạn sẽ bị ẩn danh người đăng để bảo mật thông
-                    tin cho bạn và mọi người
+                    Your post will be anonymized for the privacy of you and everyone
                   </li>
                 </ul>
               </div>
