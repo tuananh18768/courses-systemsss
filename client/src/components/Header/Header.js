@@ -24,6 +24,7 @@ export default function Header() {
       fetchAvatar(token).then((res) => dispatch(dispatchGetAvatar(res)));
     }
   }, [token, dispatch]);
+  console.log(getAvatar.filePath)
   const userLink = () => {
     return (
       <div className="header" style={{ display: "flex" }}>
@@ -57,7 +58,7 @@ export default function Header() {
                 }}
                 src={
                   getAvatar
-                    ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}`
+                    ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
                     : user.avatar
                 }
                 alt="221"
@@ -74,7 +75,7 @@ export default function Header() {
                       }}
                       src={
                         getAvatar
-                          ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}`
+                          ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
                           : user.avatar
                       }
                       alt="alo1"

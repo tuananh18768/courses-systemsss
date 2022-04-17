@@ -23,7 +23,7 @@ export default function AdminManagerDepartment() {
 
   const [dataDepartment, setDataDepartment] = useState(data);
   const { departmentAlls } = department;
-  // const [modal, setModal] = useState({})
+  const [loading, setLoading] = useState(0);
   const { name, set_deadline, set_deadlineSecond, error, success } =
     dataDepartment;
 
@@ -34,7 +34,7 @@ export default function AdminManagerDepartment() {
         dispatch(dispatchGetAllDepartment(res))
       );
     }
-  }, [token, dispatch]);
+  }, [token, dispatch, loading]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataDepartment({
@@ -74,7 +74,7 @@ export default function AdminManagerDepartment() {
         confirmButtonText: "OK",
       }).then((confirm) => {
         if (confirm.isConfirmed) {
-          window.location.href = "/adminManager";
+          setLoading(Date.now());
         }
       });
     } catch (error) {
@@ -85,7 +85,7 @@ export default function AdminManagerDepartment() {
         confirmButtonText: "OK",
       }).then((confirm) => {
         if (confirm.isConfirmed) {
-          window.location.href = "/adminManager";
+          setLoading(Date.now());
         }
       });
     }
@@ -104,7 +104,7 @@ export default function AdminManagerDepartment() {
         confirmButtonText: "OK",
       }).then((confirm) => {
         if (confirm.isConfirmed) {
-          window.location.href = "/adminManager";
+          setLoading(Date.now());
         }
       });
     } catch (error) {
@@ -115,7 +115,7 @@ export default function AdminManagerDepartment() {
         confirmButtonText: "OK",
       }).then((confirm) => {
         if (confirm.isConfirmed) {
-          window.location.href = "/adminManager";
+          setLoading(Date.now());
         }
       });
     }
@@ -143,7 +143,7 @@ export default function AdminManagerDepartment() {
           });
           Swal.fire("Deleted!", res.data.msg, "success").then((confirm) => {
             if (confirm.isConfirmed) {
-              window.location.href = "/adminManager";
+              setLoading(Date.now());
             }
           });
         } catch (error) {
@@ -154,7 +154,7 @@ export default function AdminManagerDepartment() {
             confirmButtonText: "OK",
           }).then((confirm) => {
             if (confirm.isConfirmed) {
-              window.location.href = "/adminManager";
+              setLoading(Date.now());
             }
           });
         }

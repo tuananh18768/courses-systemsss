@@ -153,9 +153,10 @@ export default function Content() {
         responseType: "blob",
       });
       const str = res.headers["content-disposition"];
-      const startSlice = str.indexOf('"');
-      const endSlice = str.lastIndexOf('"');
-      const fileName = str.slice(startSlice + 1, endSlice);
+      const startSlice = str.indexOf('=');
+      const endSlice = str.lastIndexOf('');
+      const fileName = str.slice(startSlice + 1, endSlice + 1);
+      console.log(fileName)
 
       saveAs(res.data, fileName);
       res.data();

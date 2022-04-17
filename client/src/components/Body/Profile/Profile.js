@@ -123,7 +123,7 @@ export default function Profile() {
     }
   };
   const linkImage = getAvatar
-    ? `https://courses-systems.herokuapp.com/${getAvatar?.filePath}`
+    ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
     : user.avatar;
 
   console.log(getAvatar)
@@ -220,6 +220,7 @@ export default function Profile() {
               />
             </div>
             <button
+              style={{ color: '#fff' }}
               disabled={loading}
               onClick={handleUpdate}
               className="wraper_profile_submit"

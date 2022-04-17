@@ -295,22 +295,40 @@ const getAllIdeaOfUser = async(req, res) => {
 };
 const downloadZipFile = async(req, res) => {
     try {
-        const doc = await ManyFileModel.find();
-        const file = doc.reduce(
-            (acc, currentValue) => acc.concat(currentValue.files), []
-        );
+        // const doc = await ManyFileModel.find();
+        // const file = doc.reduce(
+        //     (acc, currentValue) => acc.concat(currentValue.files), []
+        // );
+        // const zip = new admzip();
+        // file.forEach((fil) => {
+        //     zip.addLocalFile(fil.filePath);
+        // });
+        // const outputPath = "/" + Date.now() + "output.zip";
+        // fs.writeFileSync(outputPath, zip.toBuffer(), { mode: parseInt("0755", 8) });
+        // res.setHeader("Content-disposition", "attachment; filename=" + outputPath);
+        // res.download(outputPath, (err) => {
+        //     if (err) {
+        //         res.send("Error in downloading zip file");
+        //     }
+        // });
+        let outputuploadDir = fs.readdirSync(__dirname + "/../public/uploads");
         const zip = new admzip();
-        file.forEach((fil) => {
-            zip.addLocalFile(fil.filePath);
-        });
-        const outputPath = "/" + Date.now() + "output.zip";
-        fs.writeFileSync(outputPath, zip.toBuffer(), { mode: parseInt("0755", 8) });
-        res.setHeader("Content-disposition", "attachment; filename=" + outputPath);
-        res.download(outputPath, (err) => {
-            if (err) {
-                res.send("Error in downloading zip file");
-            }
-        });
+        console.log(outputuploadDir.length);
+        for (let i = 0; i < outputuploadDir.length; i++) {
+            // console.log(outputuploadDir[i] + "jelo");
+            zip.addLocalFile(__dirname + "/../public/uploads/" + outputuploadDir[i]);
+        }
+        //file name
+        const downloadName = `Document.zip`;
+
+        const data = zip.toBuffer();
+        res.setHeader("Content-Type", "application/octet-stream");
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename=${downloadName}`
+        );
+        res.set("Content-Length", data.length);
+        res.status(200).send(data);
     } catch (error) {
         return res.status(500).json({ msg: error.message });
     }
