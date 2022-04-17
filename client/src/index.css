@@ -133,6 +133,17 @@ button {
     .wrapIdeas {
         width: 100% !important;
     }
+    .ideaContent {
+        width: 550px !important;
+        border: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ideaContent {
+        width: 350px !important;
+        border: 0;
+    }
 }
 
 

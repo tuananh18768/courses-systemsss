@@ -156,7 +156,6 @@ export default function Content() {
       const startSlice = str.indexOf('=');
       const endSlice = str.lastIndexOf('');
       const fileName = str.slice(startSlice + 1, endSlice + 1);
-      console.log(fileName)
 
       saveAs(res.data, fileName);
       res.data();

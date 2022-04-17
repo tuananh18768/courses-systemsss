@@ -264,7 +264,7 @@ a:hover {
 }
 
 .wrapIdeas {
-    width: 80%;
+    width: 100%;
     padding: 20px;
     background-color: rgb(212 231 231);
     float: right;
@@ -374,7 +374,7 @@ a:hover {
 }
 
 .ideaContent {
-    max-width: 860px;
+    width: 860px;
     padding: 20px;
     flex-direction: column;
     border-right: 1px solid rgb(207, 204, 204);
