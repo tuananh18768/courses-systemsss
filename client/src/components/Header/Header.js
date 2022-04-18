@@ -303,7 +303,7 @@ export default function Header() {
             }}
             to="/"
           >
-            <img src="../img/logo.jpg" alt="logo" className="header__img" />{" "}
+            <img src="../img/logo.jpg" alt="logo" className="header__img" />
             Courses System
           </Link>
         </div>
