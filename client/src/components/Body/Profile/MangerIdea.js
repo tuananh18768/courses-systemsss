@@ -407,6 +407,7 @@ export default function MangerIdea(props) {
     setFiles((current) => current.filter((p) => p.fileName !== fileName));
     setStatusFile(true);
   };
+  console.log(files)
   return (
     <div>
       <div style={{ marginTop: "116px" }}>
@@ -1160,13 +1161,12 @@ export default function MangerIdea(props) {
                         </div>
                         {/* {select_file} */}
                         <input
-                          style={{ display: "block !important" }}
                           className="col-12"
                           type="file"
                           id="file-input"
                           name="file"
                           multiple
-                          {...getInputProps()}
+                          {...getInputProps({ style: { display: "block" } })}
                         />
                         {statusFile
                           ? files?.map((current, index) => {
