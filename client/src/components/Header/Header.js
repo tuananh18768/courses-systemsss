@@ -33,7 +33,7 @@ export default function Header() {
               style={{ width: 110 }}
               src="./img/dai-hoc-greenwich.jpg"
               alt="helo"
-            />{" "}
+            />
             <span>Courses System</span>
           </Link>
         </div>
