@@ -67,8 +67,9 @@ export default function Content() {
       );
     }
   }, [token, dispatch]);
+
   useEffect(() => {
-    if (token) {
+    if (token && isManager) {
       fetchAllDepartment(token).then((res) =>
         dispatch(dispatchGetAllDepartment(res))
       );
@@ -76,7 +77,7 @@ export default function Content() {
         dispatch(dispatchGetOneDepartment(res))
       );
     }
-  }, [token, dispatch, chooseDepart]);
+  }, [token, dispatch, chooseDepart, isManager]);
   const sortAscending = (data, field) => {
     const [...arrPost] = data;
     const obj = {

@@ -198,8 +198,8 @@ export default function AdminManagerDepartment() {
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Department Name</th>
-                <th scope="col">Status time first</th>
-                <th scope="col">Status deadline</th>
+                <th scope="col">First closure date</th>
+                <th scope="col">Final closure date</th>
                 <th scope="col">Create At</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
@@ -374,7 +374,7 @@ export default function AdminManagerDepartment() {
                 </div>
                 <div className="d-flex justify-content-between">
                   <div className="form-group">
-                    <label htmlFor="cat">Status time first</label>
+                    <label htmlFor="cat">First closure date</label>
                     <input
                       type="date"
                       name="set_deadline"
@@ -385,7 +385,7 @@ export default function AdminManagerDepartment() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="cat">Status deadline</label>
+                    <label htmlFor="cat">Final closure date</label>
                     <input
                       type="date"
                       name="set_deadlineSecond"

@@ -3,6 +3,7 @@ const userController = require('../controllers/userController')
 const auth = require('../middleware/auth')
 const authAdmin = require('../middleware/authAdmin')
 const authManager = require('../middleware/manager')
+
 const { checkTimeDeadline } = require('../middleware/checkTimeDeadline')
 
 router.post('/register', userController.register)

@@ -703,6 +703,14 @@ export default function MangerIdea(props) {
                       type="button"
                       className="btn btn-secondary"
                       data-dismiss="modal"
+                      onClick={() => {
+                        setModalCate({
+                          name: "",
+                          errorCate: "",
+                          successCate: "",
+                        });
+                        setDepartments("undefined")
+                      }}
                     >
                       Close
                     </button>

@@ -9,7 +9,7 @@ export default function Header() {
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
-  const { user, isLogged, isAdmin, isManager, getAvatar } = auth;
+  const { user, isLogged, isAdmin, isManager, getAvatar, isCoordinator } = auth;
   const handleLogout = async () => {
     try {
       await axios.get("/user/logout");
@@ -24,7 +24,6 @@ export default function Header() {
       fetchAvatar(token).then((res) => dispatch(dispatchGetAvatar(res)));
     }
   }, [token, dispatch]);
-  console.log(getAvatar.filePath)
   const userLink = () => {
     return (
       <div className="header" style={{ display: "flex" }}>
@@ -108,7 +107,7 @@ export default function Header() {
                         </div>
                       </Link>
                     </li>
-                    {isLogged && !isAdmin && !isManager && (
+                    {isLogged && !isAdmin && !isManager && !isCoordinator && (
                       <li className="noti__dropdown-item">
                         <Link
                           style={{
@@ -133,7 +132,7 @@ export default function Header() {
                       </li>
                     )}
 
-                    {isManager && (
+                    {isManager && !isCoordinator && (
                       <li className="noti__dropdown-item">
                         <Link
                           style={{
