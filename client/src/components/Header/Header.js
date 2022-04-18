@@ -290,7 +290,6 @@ export default function Header() {
     );
   };
 
-  console.log(getAvatar);
   return (
     <header className="header">
       <div className="header__content">
@@ -305,7 +304,7 @@ export default function Header() {
             to="/"
           >
             <img src="../img/logo.jpg" alt="logo" className="header__img" />{" "}
-            Courses Sytem
+            Courses System
           </Link>
         </div>
         <div className="header__login">
