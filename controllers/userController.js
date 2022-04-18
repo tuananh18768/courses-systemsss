@@ -300,21 +300,6 @@ const userController = {
             return res.status(500).json({ msg: error.message });
         }
     },
-    // setTimeCategory: async(req, res) => {
-    //     try {
-    //         const params = req.params.id
-    //         const checkCategory = await Categories.findById(params)
-    //         if (!checkCategory) return res.status(500).json({ msg: 'Not valid!!' })
-
-    //         const newSetTime = new Categories({
-    //             set_deadline: req.body
-    //         })
-    //         newSetTime.save()
-    //         res.status(200).json({ msg: 'set time successfully' })
-    //     } catch (error) {
-    //         return res.status(500).json({ msg: error.message })
-    //     }
-    // },
     dashboard: async(req, res) => {
         try {
             const user = await Users.find();

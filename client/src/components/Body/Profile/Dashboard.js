@@ -192,7 +192,7 @@ export default function Dashboard() {
 
                     </div>
                     <div className="col7__item">
-                        <h3 className="text-center">Cate All</h3>
+                        <h3 className="text-center">Category All</h3>
                         <Pie
                             data={{
                                 labels: arrayCate(),
@@ -203,7 +203,14 @@ export default function Dashboard() {
                                             'rgba(255, 0, 132, 0.2)',
                                             'rgba(93, 13, 54, 0.8)',
                                             'rgba(120, 255, 0, 0.2)',
-                                            'rgba(0, 168, 255, 0.2)'
+                                            'rgba(0, 168, 255, 0.2)',
+                                            'rgba(245, 121, 145, 0.8)',
+                                            'rgba(50, 50, 69, 0.8)',
+                                            'rgba(102, 145, 138, 0.8)',
+                                            'rgba(131, 153, 149, 0.8)',
+                                            'rgba(65, 114, 25, 0.8)',
+                                            'rgba(104, 105, 12, 0.8)',
+                                            'rgba(221, 223, 15, 0.8)',
                                         ],
                                         data: elementCate(),
 
