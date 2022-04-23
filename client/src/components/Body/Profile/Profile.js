@@ -126,11 +126,7 @@ export default function Profile() {
     ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
     : user.avatar;
 
-<<<<<<< HEAD
   console.log(getAvatar);
-=======
-  console.log(getAvatar)
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
   return (
     <>
       <div style={{ marginTop: "75px" }}>
@@ -178,7 +174,6 @@ export default function Profile() {
           </div>
           <div className="wraper_profile_middle">
             <h1 className="wraper_profile_heading">Basic Information</h1>
-<<<<<<< HEAD
             <hr />
             <div className="form-group container-fluid">
               <div className="row flex-column flex-lg-row">
@@ -254,55 +249,6 @@ export default function Profile() {
             </div>
             <button
               style={{ color: "#fff" }}
-=======
-            <hr width="500px" style={{ marginLeft: 100 }} />
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Your name"
-                defaultValue={user.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Email address"
-                defaultValue={user.email}
-                disabled
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">New password</label>
-              <input
-                type="pass"
-                name="password"
-                id="password"
-                placeholder="New password address"
-                value={password}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cf_password">Confirm password</label>
-              <input
-                type="pass"
-                name="cf_password"
-                id="cf_password"
-                placeholder="Confirm password address"
-                value={cf_password}
-                onChange={handleChange}
-              />
-            </div>
-            <button
-              style={{ color: '#fff' }}
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
               disabled={loading}
               onClick={handleUpdate}
               className="wraper_profile_submit"
@@ -312,17 +258,9 @@ export default function Profile() {
           </div>
 
           <div className="wraper_profile_right">
-<<<<<<< HEAD
             <button>
               <Link to="/">Go view home</Link>
             </button>
-=======
-            <div className="div_btn">
-              <button>
-                <Link to="/">Go view home</Link>
-              </button>
-            </div>
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
           </div>
         </div>
       </div>

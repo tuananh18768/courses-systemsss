@@ -20,7 +20,6 @@ const departmentShema = new mongoose.Schema({
     timestamps: true,
 })
 
-
 const departmentModel = mongoose.model("Department", departmentShema)
 
 

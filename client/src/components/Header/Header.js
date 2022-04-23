@@ -4,11 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { fetchAvatar, dispatchGetAvatar } from "../../redux/actions/authAction";
 import reponsive from "./reponsiveHeader.module.css";
-<<<<<<< HEAD
 import Category from "../Body/Categories/Categories";
-=======
-
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
 export default function Header() {
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
@@ -30,7 +26,6 @@ export default function Header() {
   }, [token, dispatch]);
   const userLink = () => {
     return (
-<<<<<<< HEAD
       <div className="header">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa-solid fa-bars header__bar"></i>
@@ -40,20 +35,13 @@ export default function Header() {
             <Category />
           </div>
         </div>
-=======
-      <div className="header" style={{ display: "flex" }}>
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
         <div className="logo">
           <Link to="/home" style={{ display: "flex", gap: "10px" }}>
             <img
               style={{ width: 110 }}
               src="./img/dai-hoc-greenwich.jpg"
               alt="helo"
-<<<<<<< HEAD
             />{" "}
-=======
-            />
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
             <span>Courses System</span>
           </Link>
         </div>
@@ -311,7 +299,6 @@ export default function Header() {
   };
 
   return (
-<<<<<<< HEAD
     <>
       <header className="header">
         <div className="header__content">
@@ -345,38 +332,5 @@ export default function Header() {
         </div>
       </header>
     </>
-=======
-    <header className="header">
-      <div className="header__content">
-        <div className="header__logo">
-          <Link
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "14px",
-              margin: "10px",
-            }}
-            to="/"
-          >
-            <img src="../img/logo.jpg" alt="logo" className="header__img" />
-            Courses System
-          </Link>
-        </div>
-        <div className="header__login">
-          <ul style={{ margin: 0 }}>
-            {isLogged ? (
-              userLink()
-            ) : (
-              <button className="btn btn-primary">
-                <Link to="/login" style={{ color: "white" }}>
-                  <i className="fa fa-user"></i> Sign In
-                </Link>
-              </button>
-            )}
-          </ul>
-        </div>
-      </div>
-    </header>
->>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
   );
 }
