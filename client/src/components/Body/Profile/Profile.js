@@ -176,11 +176,11 @@ export default function Profile() {
             <h1 className="wraper_profile_heading">Basic Information</h1>
             <hr />
             <div className="form-group container-fluid">
-              <div className="row">
+              <div className="row flex-column flex-lg-row">
                 <div className="col-2">
                   <label htmlFor="name">Name</label>
                 </div>
-                <div className="col-10">
+                <div className="col-12 col-lg-10">
                   <input
                     type="text"
                     name="name"
@@ -194,11 +194,11 @@ export default function Profile() {
               </div>
             </div>
             <div className="form-group container-fluid">
-              <div className="row">
+              <div className="row flex-column flex-lg-row">
                 <div className="col-2">
                   <label htmlFor="email">Email</label>
                 </div>
-                <div className="col-10">
+                <div className="col-12 col-lg-10">
                   <input
                     type="text"
                     name="email"
@@ -212,11 +212,11 @@ export default function Profile() {
               </div>
             </div>
             <div className="form-group container-fluid">
-              <div className="row">
+              <div className="row flex-column flex-lg-row">
                 <div className="col-2">
                   <label htmlFor="password">New password</label>
                 </div>
-                <div className="col-10">
+                <div className="col-12 col-lg-10">
                   <input
                     type="pass"
                     name="password"
@@ -230,11 +230,11 @@ export default function Profile() {
               </div>
             </div>
             <div className="form-group container-fluid">
-              <div className="row">
+              <div className="row flex-column flex-lg-row">
                 <div className="col-2">
                   <label htmlFor="password">Confirm password</label>
                 </div>
-                <div className="col-10">
+                <div className="col-12 col-lg-10">
                   <input
                     type="pass"
                     name="password"
