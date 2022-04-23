@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { fetchAvatar, dispatchGetAvatar } from "../../redux/actions/authAction";
 import reponsive from "./reponsiveHeader.module.css";
-
+import Category from "../Body/Categories/Categories";
 export default function Header() {
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
@@ -26,7 +26,15 @@ export default function Header() {
   }, [token, dispatch]);
   const userLink = () => {
     return (
-      <div className="header" style={{ display: "flex" }}>
+      <div className="header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars header__bar"></i>
+        </button>
+        <div class="collapse header__collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <Category />
+          </div>
+        </div>
         <div className="logo">
           <Link to="/home" style={{ display: "flex", gap: "10px" }}>
             <img
@@ -290,38 +298,39 @@ export default function Header() {
     );
   };
 
-  console.log(getAvatar);
   return (
-    <header className="header">
-      <div className="header__content">
-        <div className="header__logo">
-          <Link
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "14px",
-              margin: "10px",
-            }}
-            to="/"
-          >
-            <img src="../img/logo.jpg" alt="logo" className="header__img" />{" "}
-            Courses Sytem
-          </Link>
+    <>
+      <header className="header">
+        <div className="header__content">
+          <div className="header__logo">
+            <Link
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "14px",
+                margin: "10px",
+              }}
+              to="/"
+            >
+              <img src="../img/logo.jpg" alt="logo" className="header__img" />{" "}
+              Courses Sytem
+            </Link>
+          </div>
+          <div className="header__login">
+            <ul style={{ margin: 0 }}>
+              {isLogged ? (
+                userLink()
+              ) : (
+                <button className="btn btn-primary">
+                  <Link to="/login" style={{ color: "white" }}>
+                    <i className="fa fa-user"></i> Sign In
+                  </Link>
+                </button>
+              )}
+            </ul>
+          </div>
         </div>
-        <div className="header__login">
-          <ul style={{ margin: 0 }}>
-            {isLogged ? (
-              userLink()
-            ) : (
-              <button className="btn btn-primary">
-                <Link to="/login" style={{ color: "white" }}>
-                  <i className="fa fa-user"></i> Sign In
-                </Link>
-              </button>
-            )}
-          </ul>
-        </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

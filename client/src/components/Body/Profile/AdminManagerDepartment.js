@@ -193,7 +193,7 @@ export default function AdminManagerDepartment() {
           </button>
         </div>
         <div className="mt-4 tbl border border-info">
-          <table className="table table-bordered table-hover ">
+          <table className="table table-responsive table-bordered table-hover ">
             <thead>
               <tr>
                 <th scope="col">ID</th>

@@ -1,163 +1,165 @@
-   .body {
-       background-color: aliceblue;
-       padding: 100px 0;
-   }
-   
-   .wraper_profile {
-       display: flex;
-       justify-content: space-between;
-       width: 80%;
-       margin: 0 auto;
-   }
-   
-   .wraper_profile_heading {
-       text-align: center;
-   }
-   
-   .wraper_profile_right {
-       flex-basis: 20%;
-   }
-   
-   .div_form {
-       margin-left: 100px;
-       margin-top: 50px;
-   }
-   
-   input {
-       width: 350px;
-       height: 46px;
-       border-radius: 10px;
-       border-style: none;
-       padding: 10px;
-   }
-   /* css nút submit trong thẻ form */
-   
-   input[type=submit] {
-       width: 200px;
-       margin-left: 150px;
-       font-weight: 900;
-       border-radius: 20px;
-       background-color: #00a3ff;
-       color: white;
-       border-style: none;
-       text-transform: capitalize;
-       font-size: 15px;
-   }
-   /* css thẻ các label trong form */
-   
-   label {
-       text-transform: uppercase;
-       font-weight: 500;
-       font-size: large;
-       margin-left: 20px;
-       min-width: 220px;
-   }
-   
-   .wraper_profile_left_all {
-       background-color: #1a2249;
-       color: white;
-       border: 0 solid black;
-       width: 100%;
-       border-radius: 10px;
-       text-align: center;
-       padding: 20px;
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   }
-   
-   .img_profile {
-       width: 250px;
-       height: 250px;
-       object-fit: cover;
-       border-radius: 50%;
-       border: 10px solid #ddd;
-   }
-   
-   .div_btn {
-       position: absolute;
-       top: 200px;
-   }
-   /* css thẻ button */
-   
-   .div_btn button,
-   .wraper_profile_submit {
-       border-radius: 20px;
-       width: 200px;
-       background-color: #00a3ff;
-       font-weight: 900;
-       border-style: none;
-       margin-top: 20px;
-       height: 50px;
-       box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-       transition: all 0.5s;
-   }
-   
-   .div_btn button:hover {
-       background-color: #034369;
-   }
-   
-   .div_btn button a {
-       color: black;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 100%;
-       transition: all 0.5s;
-   }
-   
-   .div_btn button:hover a {
-       color: white
-   }
-   
-   .wraper_profile_submit {
-       background-color: #1a2249;
-       display: block;
-       margin: 40px auto 0;
-   }
-   
-   .customers {
-       width: 80%;
-       margin: 0 auto;
-   }
-   
-   .span__chooseFile {
-       position: absolute;
-       left: 50%;
-       transform: translate(-50%, 100%);
-       bottom: 0;
-       transition: all 0.5s;
-       cursor: pointer;
-       background-color: #808080c2;
-       width: 100%;
-       padding: 10px 0;
-   }
-   
-   .parent__file:hover .span__chooseFile {
-       transform: translate(-50%, 0%);
-   }
-   
-   #file_up::file-selector-button {
-       display: none;
-   }
-   
-   #file_up {
-       position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       opacity: 0;
-       cursor: pointer;
-       z-index: 99;
-   }
-   
-   .edit_user .col-left #isAdmin {
-       width: 20px;
-       height: 20px;
-       transform: translateY(3px);
-       margin: 10px 0;
-   }
-   
-   .edit_user .col-left #isAdmin+label {
-       display: inline-block;
-       margin-left: 5px;
-   }
+.body {
+  background-color: aliceblue;
+  padding: 50px 0;
+}
+
+.wraper_profile {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wraper_profile_heading {
+  text-align: center;
+}
+
+.wraper_profile_right {
+  flex-basis: 20%;
+}
+
+.div_form {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+input {
+  height: 46px;
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
+/* css nút submit trong thẻ form */
+
+input[type="submit"] {
+  width: 200px;
+  margin-left: 150px;
+  font-weight: 900;
+  border-radius: 20px;
+  background-color: #00a3ff;
+  color: white;
+  border-style: none;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+/* css thẻ các label trong form */
+
+label {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: large;
+  min-width: 220px;
+}
+
+.wraper_profile_left_all {
+  background-color: #1a2249;
+  color: white;
+  border: 0 solid black;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img_profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* css thẻ button */
+
+.wraper_profile_right button,
+.wraper_profile_submit {
+  border-radius: 20px;
+  width: 200px;
+  background-color: #00a3ff;
+  font-weight: 900;
+  border-style: none;
+  margin-top: 20px;
+  height: 50px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+}
+
+.div_btn button:hover {
+  background-color: #034369;
+}
+
+.div_btn button a {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.div_btn button:hover a {
+  color: white;
+}
+
+.wraper_profile_submit {
+  background-color: #1a2249;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.customers {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.span__chooseFile {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  bottom: 0;
+  transition: all 0.5s;
+  cursor: pointer;
+  background-color: #808080c2;
+  width: 100%;
+  padding: 10px 0;
+}
+.parent__file {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: white;
+  margin: 20px auto;
+}
+.parent__file:hover .span__chooseFile {
+  transform: translate(-50%, 0%);
+}
+
+#file_up::file-selector-button {
+  display: none;
+}
+
+#file_up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.edit_user .col-left #isAdmin {
+  width: 20px;
+  height: 20px;
+  transform: translateY(3px);
+  margin: 10px 0;
+}
+
+.edit_user .col-left #isAdmin + label {
+  display: inline-block;
+  margin-left: 5px;
+}

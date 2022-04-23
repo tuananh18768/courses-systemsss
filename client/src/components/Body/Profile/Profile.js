@@ -126,7 +126,7 @@ export default function Profile() {
     ? `https://app-courses-project.herokuapp.com/${getAvatar?.filePath}`
     : user.avatar;
 
-  console.log(getAvatar)
+  console.log(getAvatar);
   return (
     <>
       <div style={{ marginTop: "75px" }}>
@@ -174,53 +174,81 @@ export default function Profile() {
           </div>
           <div className="wraper_profile_middle">
             <h1 className="wraper_profile_heading">Basic Information</h1>
-            <hr width="500px" style={{ marginLeft: 100 }} />
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Your name"
-                defaultValue={user.name}
-                onChange={handleChange}
-              />
+            <hr />
+            <div className="form-group container-fluid">
+              <div className="row">
+                <div className="col-2">
+                  <label htmlFor="name">Name</label>
+                </div>
+                <div className="col-10">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Your name"
+                    defaultValue={user.name}
+                    onChange={handleChange}
+                    className="w-100"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Email address"
-                defaultValue={user.email}
-                disabled
-              />
+            <div className="form-group container-fluid">
+              <div className="row">
+                <div className="col-2">
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="col-10">
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email address"
+                    defaultValue={user.email}
+                    disabled
+                    className="w-100"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="password">New password</label>
-              <input
-                type="pass"
-                name="password"
-                id="password"
-                placeholder="New password address"
-                value={password}
-                onChange={handleChange}
-              />
+            <div className="form-group container-fluid">
+              <div className="row">
+                <div className="col-2">
+                  <label htmlFor="password">New password</label>
+                </div>
+                <div className="col-10">
+                  <input
+                    type="pass"
+                    name="password"
+                    id="password"
+                    placeholder="New password address"
+                    value={password}
+                    onChange={handleChange}
+                    className="w-100"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="cf_password">Confirm password</label>
-              <input
-                type="pass"
-                name="cf_password"
-                id="cf_password"
-                placeholder="Confirm password address"
-                value={cf_password}
-                onChange={handleChange}
-              />
+            <div className="form-group container-fluid">
+              <div className="row">
+                <div className="col-2">
+                  <label htmlFor="password">Confirm password</label>
+                </div>
+                <div className="col-10">
+                  <input
+                    type="pass"
+                    name="password"
+                    id="password"
+                    placeholder="New password address"
+                    value={cf_password}
+                    onChange={handleChange}
+                    className="w-100"
+                  />
+                </div>
+              </div>
             </div>
             <button
-              style={{ color: '#fff' }}
+              style={{ color: "#fff" }}
               disabled={loading}
               onClick={handleUpdate}
               className="wraper_profile_submit"
@@ -230,11 +258,9 @@ export default function Profile() {
           </div>
 
           <div className="wraper_profile_right">
-            <div className="div_btn">
-              <button>
-                <Link to="/">Go view home</Link>
-              </button>
-            </div>
+            <button>
+              <Link to="/">Go view home</Link>
+            </button>
           </div>
         </div>
       </div>

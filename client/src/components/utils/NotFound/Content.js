@@ -194,7 +194,7 @@ export default function Content() {
         </div>
         <div className="wrapIdeas">
           <div className="wrapIdeas__header" style={{ border: 0 }}>
-            <p>{ideaStaffs.length} items found</p>
+            <p className="py-2">{ideaStaffs.length} items found</p>
             <div
               className="dropdown"
               style={{ display: "flex", alignItems: "center" }}
