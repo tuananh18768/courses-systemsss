@@ -1,0 +1,233 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* 
+.App {
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: 0 0 20px #eee;
+    margin: 0 auto;
+    overflow: hidden;
+} */
+
+#downloadZip {
+  background-color: rgba(171, 11, 5, 0.85);
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-right: 20px;
+  transition: all 0.5s;
+}
+
+#downloadZip:hover {
+  background-color: rgba(231, 97, 91, 0.85);
+}
+
+#downloadZip:disabled {
+  background-color: rgba(124, 124, 124, 0.304);
+}
+
+#downloadCsv {
+  background-color: rgba(46, 165, 13, 0.85);
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+#downloadCsv:hover {
+  background-color: rgba(50, 97, 91, 0.85);
+}
+
+#downloadCsv:disabled {
+  background-color: rgba(124, 124, 124, 0.304);
+}
+
+#nextPage {
+  background: transparent;
+  color: black;
+}
+
+#nextPage:disabled {
+  background: transparent;
+  color: rgba(175, 163, 163, 0.783);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#dashboard:hover {
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: #357daa;
+}
+
+.modal {
+  overflow: scroll;
+}
+
+@media screen and (max-width: 992px) {
+  .wrapsb {
+    height: auto !important;
+    padding-left: 0;
+  }
+  .noti__dropdown {
+    min-width: auto !important;
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+  /* Category */
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    margin-top: 175px !important;
+  }
+  .header__noti-item {
+    position: static;
+  }
+  .wrapIdeas {
+    width: 100% !important;
+  }
+  .ideaContent {
+    max-width: 735px !important;
+  }
+  .adwrap__content {
+    flex-direction: column-reverse;
+  }
+  .adwrap__content__col1,
+  .adwrap__content__col2 {
+    width: 100%;
+  }
+  .db__row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .db__col-4 {
+    width: 100%;
+  }
+  .mgl10 {
+    margin-left: 0;
+  }
+  .col6,
+  .col7,
+  .cm__col1,
+  .cm__col2 {
+    width: 100%;
+  }
+  .wrapic {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cm__col2 {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapIdeas__header {
+    flex-direction: column !important;
+    align-items: start;
+  }
+  .wrapIdeas__header > div {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+  }
+  .wrapIdeas__header p {
+    margin-bottom: 0;
+  }
+  .wrapIdeas__header .dropdown {
+    margin: 0 !important;
+  }
+  .wrapIdeas__header button {
+    flex-basis: 50%;
+  }
+  .btnVI {
+    width: 100% !important;
+  }
+  .idea__home {
+    flex-direction: column !important;
+    padding: 10px !important;
+  }
+  .divimg {
+    padding: 5px 20px !important;
+  }
+  .wrapIdeas {
+    width: 100% !important;
+  }
+  .ideaContent {
+    width: 550px !important;
+    border: 0;
+  }
+  .header-search {
+    display: none;
+  }
+  .header__bar {
+    display: block;
+  }
+  .main__left {
+    display: none;
+  }
+  .wrapIdeas__content {
+    padding-top: 0;
+  }
+  .wrapIdeas__header {
+    padding-bottom: 0;
+  }
+  .header__collapse {
+    display: block;
+    position: fixed;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  #carouselExampleIndicators .carousel-inner .carousel-item img {
+    object-fit: cover;
+  }
+  .categories__heading {
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ideaContent {
+    width: 350px !important;
+    border: 0;
+  }
+}
+
+/* Header */
+
+@import url("./components/Header/header.css");
+
+/* @import url("./components/Body/auth/auth.css"); */
+
+@import url("./components/Body/Profile/profile.css");
+@import url("./components/Body/iIdeaStaff/uploadIdea.css");
+@import url("./components/Body/iIdeaStaff/detailPost.css");
+@import url("./components/Body/Profile/managerIdea.css");
+@import url("./components/Body/Profile/dashboard.css");
+@import url("./components/Body/Profile/adminProfile.css");
+@import url("./components/Body/Profile/adminManager.css");
+
+/* @import url("./components/Body/Profile/adminManager.css"); */
