@@ -1,9 +1,18 @@
 * {
+<<<<<<< HEAD
   padding: 0;
   box-sizing: border-box;
   margin: 0;
 }
 
+=======
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+>>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
 /* 
 .App {
     max-width: 1200px;
@@ -15,6 +24,7 @@
 } */
 
 #downloadZip {
+<<<<<<< HEAD
   background-color: rgba(171, 11, 5, 0.85);
   color: #fff;
   padding: 15px;
@@ -216,6 +226,139 @@ button {
   }
 }
 
+=======
+    background-color: rgba(171, 11, 5, 0.85);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    transition: all 0.5s;
+}
+
+#downloadZip:hover {
+    background-color: rgba(231, 97, 91, 0.85);
+}
+
+#downloadZip:disabled {
+    background-color: rgba(124, 124, 124, 0.304);
+}
+
+#downloadCsv {
+    background-color: rgba(46, 165, 13, 0.85);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+#downloadCsv:hover {
+    background-color: rgba(50, 97, 91, 0.85);
+}
+
+#downloadCsv:disabled {
+    background-color: rgba(124, 124, 124, 0.304);
+}
+
+#nextPage {
+    background: transparent;
+    color: black;
+}
+
+#nextPage:disabled {
+    background: transparent;
+    color: rgba(175, 163, 163, 0.783);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#dashboard:hover {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #357daa;
+}
+
+.modal {
+    overflow: scroll;
+}
+
+@media screen and (max-width: 992px) {
+    .header,
+    .wrapsb {
+        flex-direction: column !important;
+    }
+    .header {
+        padding: 20px 0;
+    }
+    .wrapsb {
+        height: auto !important;
+        padding-left: 0;
+    }
+    .noti__dropdown {
+        min-width: auto !important;
+        width: 100%;
+        right: 0;
+        left: 0;
+        top: 125px;
+    }
+    /* Category */
+    #carouselExampleIndicators .carousel-inner .carousel-item img {
+        height: 100px !important;
+        object-fit: cover;
+        margin-top: 172px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        margin-top: 175px !important;
+    }
+    .header__noti-item {
+        position: static;
+    }
+    .wrapIdeas {
+        width: 100% !important;
+    }
+    .ideaContent {
+        max-width: 735px !important
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .idea__home {
+        flex-direction: column !important;
+        padding: 10px !important;
+    }
+    .divimg {
+        padding: 5px 20px !important;
+    }
+    .wrapIdeas {
+        width: 100% !important;
+    }
+    .ideaContent {
+        width: 550px !important;
+        border: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ideaContent {
+        width: 350px !important;
+        border: 0;
+    }
+}
+
+
+>>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
 /* Header */
 
 @import url("./components/Header/header.css");
@@ -230,4 +373,8 @@ button {
 @import url("./components/Body/Profile/adminProfile.css");
 @import url("./components/Body/Profile/adminManager.css");
 
+<<<<<<< HEAD
 /* @import url("./components/Body/Profile/adminManager.css"); */
+=======
+/* @import url("./components/Body/Profile/adminManager.css"); */
+>>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c

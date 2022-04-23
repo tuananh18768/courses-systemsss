@@ -1,4 +1,5 @@
 .adwrap {
+<<<<<<< HEAD
   background-color: #f5f8fb;
   color: #272741;
   font-family: "Roboto", sans-serif;
@@ -196,3 +197,202 @@ p.ad__p_f {
 .managerAll button {
   font-size: 14px;
 }
+=======
+    background-color: #f5f8fb;
+    color: #272741;
+    font-family: 'Roboto', sans-serif;
+}
+
+.adwrap__header {
+    padding: 15px;
+    border-bottom: 1px solid #d9cece;
+    box-shadow: 1px 1px 1px 1px #998c8c;
+    background-color: #fff;
+}
+
+.adwrap__header h2 {
+    margin-bottom: 10px;
+}
+
+.adwrap__content {
+    padding: 20px;
+    display: flex;
+}
+
+.adwrap__content__col1 {
+    width: 70%;
+    margin-right: 20px;
+}
+
+.adwrap__content__col__box {
+    background-color: #fff;
+    width: 100%;
+    padding: 20px 30px;
+    box-shadow: 1px 1px 10px #b9b2b2;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.col1__inputg {
+    display: flex;
+}
+
+.col1__inputg__input label {
+    display: block;
+    font-size: 14px;
+    opacity: 0.8;
+    text-transform: capitalize;
+}
+
+.col1__inputg__icon {
+    display: flex;
+    margin-right: 20px;
+}
+
+.col1__inputg__icon i {
+    font-size: 25px;
+    margin: auto;
+}
+
+.em i {
+    font-size: 20px;
+}
+
+.col1__inputg__input {
+    width: 100%;
+}
+
+.col1__inputg__input input {
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 300;
+    border-bottom: 1px solid #524848;
+}
+
+.ad__mb {
+    margin-bottom: 20px;
+}
+
+.adwrap__content__col__box h2 {
+    font-family: 'Handlee', cursive;
+    font-size: 45px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.adwrap__content__col2 {
+    width: 30%;
+    text-align: center;
+}
+
+div.ad__img {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.ad__img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ad__img:hover .span__chooseFile {
+    transform: translate(-50%, 10%);
+}
+
+.adwrap__content__col__box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.adwrap__content__col__box p {
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.adwrap__content__col2 .adwrap__content__col__box {
+    position: relative;
+}
+
+.bgimg {
+    position: absolute;
+    height: 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.ad__div__btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ad_btn {
+    background-color: #272741;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: bold;
+    min-width: 120px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.manager {
+    background-color: rgba(171, 19, 60, 0.97);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: bold;
+    min-width: 120px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+.manager:hover {
+    background-color: rgba(42, 5, 15, 0.97);
+    color: #fff;
+}
+
+.manager_department {
+    background-color: rgba(27, 161, 194, 0.97);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: bold;
+    min-width: 120px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+.manager_department:hover {
+    background-color: rgba(140, 22, 98, 0.97);
+    color: #fff;
+}
+
+p.ad__p_f {
+    margin-bottom: 30px;
+}
+
+.managerAll {
+    display: flex;
+    gap: 10px;
+}
+
+.managerAll button {
+    font-size: 14px;
+}
+>>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c

@@ -505,7 +505,11 @@ export default function MangerIdea(props) {
             </button>
           </div>
           <div className="mt-4 tbl border border-info">
+<<<<<<< HEAD
             <table className="table table-responsive table-bordered table-hover ">
+=======
+            <table className="table table-bordered table-hover ">
+>>>>>>> 74733a9a8119fddd9439963327f980dfaaff890c
               <thead>
                 {isManager && (
                   <tr>
